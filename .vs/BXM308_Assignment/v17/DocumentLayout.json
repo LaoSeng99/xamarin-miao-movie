@@ -1,0 +1,145 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\devProject\\Laoseng\\BXM308_Assignment\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E822C1EC-2CCA-4FE3-A15D-50AF66CD1B93}|BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment.csproj|d:\\devproject\\laoseng\\bxm308_assignment\\bxm308_assignment\\bxm308_assignment\\firebase\\firebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E822C1EC-2CCA-4FE3-A15D-50AF66CD1B93}|BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment.csproj|solutionrelative:bxm308_assignment\\bxm308_assignment\\firebase\\firebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E822C1EC-2CCA-4FE3-A15D-50AF66CD1B93}|BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment.csproj|d:\\devproject\\laoseng\\bxm308_assignment\\bxm308_assignment\\bxm308_assignment\\viewmodels\\moviebookingpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E822C1EC-2CCA-4FE3-A15D-50AF66CD1B93}|BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment.csproj|solutionrelative:bxm308_assignment\\bxm308_assignment\\viewmodels\\moviebookingpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E822C1EC-2CCA-4FE3-A15D-50AF66CD1B93}|BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment.csproj|d:\\devproject\\laoseng\\bxm308_assignment\\bxm308_assignment\\bxm308_assignment\\moviebookingticket.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}",
+      "RelativeMoniker": "D:0:0:{E822C1EC-2CCA-4FE3-A15D-50AF66CD1B93}|BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment.csproj|solutionrelative:bxm308_assignment\\bxm308_assignment\\moviebookingticket.xaml||{2974C621-7033-421A-B08A-11D27B021D1B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E822C1EC-2CCA-4FE3-A15D-50AF66CD1B93}|BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment.csproj|d:\\devproject\\laoseng\\bxm308_assignment\\bxm308_assignment\\bxm308_assignment\\viewmodels\\mainpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E822C1EC-2CCA-4FE3-A15D-50AF66CD1B93}|BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment.csproj|solutionrelative:bxm308_assignment\\bxm308_assignment\\viewmodels\\mainpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E822C1EC-2CCA-4FE3-A15D-50AF66CD1B93}|BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment.csproj|d:\\devproject\\laoseng\\bxm308_assignment\\bxm308_assignment\\bxm308_assignment\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E822C1EC-2CCA-4FE3-A15D-50AF66CD1B93}|BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment.csproj|solutionrelative:bxm308_assignment\\bxm308_assignment\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E822C1EC-2CCA-4FE3-A15D-50AF66CD1B93}|BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment.csproj|d:\\devproject\\laoseng\\bxm308_assignment\\bxm308_assignment\\bxm308_assignment\\viewmodels\\moviedetailpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E822C1EC-2CCA-4FE3-A15D-50AF66CD1B93}|BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment.csproj|solutionrelative:bxm308_assignment\\bxm308_assignment\\viewmodels\\moviedetailpageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 749,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{ce0010b1-93a1-33bb-8d9c-bcc1bf6c4873}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 904,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MovieBookingTicket.xaml",
+              "DocumentMoniker": "D:\\devProject\\Laoseng\\BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment\\MovieBookingTicket.xaml",
+              "RelativeDocumentMoniker": "BXM308_Assignment\\BXM308_Assignment\\MovieBookingTicket.xaml",
+              "ToolTip": "D:\\devProject\\Laoseng\\BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment\\MovieBookingTicket.xaml",
+              "RelativeToolTip": "BXM308_Assignment\\BXM308_Assignment\\MovieBookingTicket.xaml",
+              "ViewState": "AQIAAH8AAAAAAAAAAAAowJ4AAABTAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-13T14:29:53.902Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MovieBookingPageViewModel.cs",
+              "DocumentMoniker": "D:\\devProject\\Laoseng\\BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment\\ViewModels\\MovieBookingPageViewModel.cs",
+              "RelativeDocumentMoniker": "BXM308_Assignment\\BXM308_Assignment\\ViewModels\\MovieBookingPageViewModel.cs",
+              "ToolTip": "D:\\devProject\\Laoseng\\BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment\\ViewModels\\MovieBookingPageViewModel.cs",
+              "RelativeToolTip": "BXM308_Assignment\\BXM308_Assignment\\ViewModels\\MovieBookingPageViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T14:29:13.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "D:\\devProject\\Laoseng\\BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "BXM308_Assignment\\BXM308_Assignment\\MainPage.xaml.cs",
+              "ToolTip": "D:\\devProject\\Laoseng\\BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment\\MainPage.xaml.cs",
+              "RelativeToolTip": "BXM308_Assignment\\BXM308_Assignment\\MainPage.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T14:28:19.467Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MovieDetailPageViewModel.cs",
+              "DocumentMoniker": "D:\\devProject\\Laoseng\\BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment\\ViewModels\\MovieDetailPageViewModel.cs",
+              "RelativeDocumentMoniker": "BXM308_Assignment\\BXM308_Assignment\\ViewModels\\MovieDetailPageViewModel.cs",
+              "ToolTip": "D:\\devProject\\Laoseng\\BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment\\ViewModels\\MovieDetailPageViewModel.cs",
+              "RelativeToolTip": "BXM308_Assignment\\BXM308_Assignment\\ViewModels\\MovieDetailPageViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T14:28:01.783Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Firebase.cs",
+              "DocumentMoniker": "D:\\devProject\\Laoseng\\BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment\\Firebase\\Firebase.cs",
+              "RelativeDocumentMoniker": "BXM308_Assignment\\BXM308_Assignment\\Firebase\\Firebase.cs",
+              "ToolTip": "D:\\devProject\\Laoseng\\BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment\\Firebase\\Firebase.cs",
+              "RelativeToolTip": "BXM308_Assignment\\BXM308_Assignment\\Firebase\\Firebase.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T14:08:46.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainPageViewModel.cs",
+              "DocumentMoniker": "D:\\devProject\\Laoseng\\BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment\\ViewModels\\MainPageViewModel.cs",
+              "RelativeDocumentMoniker": "BXM308_Assignment\\BXM308_Assignment\\ViewModels\\MainPageViewModel.cs",
+              "ToolTip": "D:\\devProject\\Laoseng\\BXM308_Assignment\\BXM308_Assignment\\BXM308_Assignment\\ViewModels\\MainPageViewModel.cs",
+              "RelativeToolTip": "BXM308_Assignment\\BXM308_Assignment\\ViewModels\\MainPageViewModel.cs",
+              "ViewState": "AQIAAKMBAAAAAAAAAAA0wF0DAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T13:22:41.898Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

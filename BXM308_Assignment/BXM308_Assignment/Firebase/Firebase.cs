@@ -15,7 +15,7 @@ namespace BXM308_Assignment.Firebase
 {
     public class Firebase
     {
-        public static FirebaseClient firebase = new FirebaseClient("https://bxm308assignment-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        public static FirebaseClient firebase = new FirebaseClient("key");
 
         #region User Register
         public static async Task<bool> CheckEmailExist(string email)
