@@ -18,7 +18,7 @@ Before you begin, ensure you have the following:
 To use the app with Firebase Realtime Database, follow these steps:
 
 ### Create a Firebase Project:
-1. Go to Firebase Console.
+1. Go to [Firebase Console](https://console.firebase.google.com/).
 2. Create a new project and enable Firebase Realtime Database.
 3. Set Firebase Realtime Database Rules: If you are just testing the app without authentication, set the following rules to allow read and write access:
 
