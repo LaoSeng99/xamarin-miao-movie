@@ -747,7 +747,6 @@ namespace BXM308_Assignment.ViewModels
                     int numShowTimes = random.Next(4, 7);
                     List<string> timeOptions = new List<string> { "10:15 AM", "11:15 AM", "11:30 AM", "12:30 PM", "1:30 PM", "2:45 PM", "3:45 PM", "5:00 PM", "8:00 PM", "7:30 PM", "9:10 PM", "11:30 PM" };
 
-                    //   创建随机的场次
                     for (int j = 0; j < numShowTimes; j++)
                     {
                         //  Random Time Set
@@ -763,7 +762,6 @@ namespace BXM308_Assignment.ViewModels
                             IsFull = false
                         };
                         timeOptions.Remove(randomTime);
-                        //    创建随机的时间
                         await Firebase.Firebase.AddNewRoomTime(roomTime);
 
                     }
