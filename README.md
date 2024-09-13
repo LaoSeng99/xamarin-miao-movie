@@ -1,6 +1,12 @@
 Movie Ticket App
 This is a student assignment project that automates the creation of movie shows and seating arrangements using Firebase Realtime Database. It demonstrates a simple movie ticket management system, including room creation, showtime scheduling, and seat allocation.
 
+## Important Notice
+
+When you first start the application, you will be prompted to make a request to load movie show times and seat availability. It is crucial to agree to and complete this request to ensure that the ticket page functions correctly.
+
+For more details, you can review the request handling code in `/ViewModels/MainPageViewModel.cs` under the `#region Automation Add Movie Show` section.
+
 # Features
 - Room Creation: Automatically generate rooms in the database.
 - Showtimes Scheduling: Create movie showtimes for the next 14 days with random time slots.
@@ -102,5 +108,6 @@ If you are trying this app for testing purposes, please make sure to update your
   }
 }
 ```
+
 
 This will allow you to use the app without setting up Firebase Authentication. However, for production use, it is strongly recommended to configure proper authentication and security rules in Firebase.
