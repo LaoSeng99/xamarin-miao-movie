@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:sho="http://sharpnado.com"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="BXM308_Assignment.UserLoginPage" BackgroundColor="#080808">
+    <ContentPage.Content>
+
+        <Grid x:Name="PageContent" Opacity="0"  >
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF6400" Offset="0"/>
+                    <GradientStop Color="#ffb145" Offset="0.3"/>
+                    <GradientStop Color="#FF6400" Offset="0.7"/>
+                    <GradientStop Color="#ffb145" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <!--For Fake Shadow-->
+            <StackLayout BackgroundColor="#D1080808" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            </StackLayout>
+
+            <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0 ,0" Padding="0,0,0,16"  HorizontalOptions="FillAndExpand" >
+
+                <!--Header-->
+                <Grid HeightRequest="60" Margin="0,30,0,0" >
+                    <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3"  HorizontalTextAlignment="Center" VerticalTextAlignment="Start" Text="Welcome" Style="{StaticResource Size_Title}"></Label>
+
+                    <Frame Padding="6" BackgroundColor="#B3404040"  TranslationY="-3" CornerRadius="16" VerticalOptions="Start" HorizontalOptions="Start" Margin="16,0,0,0"   >
+                        <Image Source="BackIconWhite" Aspect="AspectFit" WidthRequest="35"></Image>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Nav_ClosePage" ></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </Grid>
+
+
+                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                    <!--Logo Image-->
+                    <StackLayout  Orientation="Horizontal" Spacing="0" Margin="0,0,0,16" >
+                        <Image Source="MiaoMovieLogo" HorizontalOptions="Start" VerticalOptions="FillAndExpand" Aspect="AspectFit" WidthRequest="120"></Image>
+                        <Image Source="MiaoMovieFont"  HorizontalOptions="Start" VerticalOptions="FillAndExpand"  Aspect="AspectFit" WidthRequest="180"></Image>
+                    </StackLayout>
+                    <!--Welcome Bio-->
+                    <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Lets Get Started!" HorizontalOptions="Center" Style="{StaticResource Size_Large}"></Label>
+                    <!--Create Account-->
+                    <Frame BackgroundColor="#ff6400" CornerRadius="50" HorizontalOptions="Center" Padding="48,16" Margin="0,32">
+                        <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3"  Text="Create account" HorizontalOptions="Center" Style="{StaticResource Size_Medium}"></Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Nav_RegisterPage" CommandParameter="RegisterStep1"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <!--Sign In-->
+                    <Frame BackgroundColor="Transparent" Padding="12,6">
+                        <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="6" HorizontalOptions="Center"  TextDecorations="Underline" Text="I already have an account" Style="{StaticResource Size_Subtitle}"></Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Nav_LoginPage" CommandParameter="SignIn"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                </StackLayout>
+                <!--Terms Of Use-->
+                <StackLayout VerticalOptions="End">
+                    <StackLayout Orientation="Horizontal"   HorizontalOptions="CenterAndExpand">
+                        <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Text="Terms of Use" Style="{StaticResource Size_Caption}"></Label>
+                        <Label Text="|" Style="{StaticResource Size_Caption}"></Label>
+                        <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Text="Privacy Policy" Style="{StaticResource Size_Caption}"></Label>
+                    </StackLayout>
+                    <StackLayout Margin="32,0">
+                        <Label HorizontalTextAlignment="Center"  Text="Copyright 2023 MiaoDaTa_Movie (666666)" Opacity="0.9" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Caption }"></Label>
+                        <Label HorizontalTextAlignment="Center" Text="Version 1.4376" Opacity="0.9" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Caption }"></Label>
+
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

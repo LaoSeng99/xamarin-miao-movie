@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:ctr="clr-namespace:BXM308_Assignment.Converter"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="BXM308_Assignment.MovieBookingTicket"
+             
+             NavigationPage.HasNavigationBar="False" BackgroundColor="#080808">
+    <ContentPage.Resources>
+        <ctr:BookingStatusColorConverter x:Key="BookingStatusColorConverter"></ctr:BookingStatusColorConverter>
+        <ctr:BookingStatusBorderColorConverter x:Key="BookingStatusBorderColorConverter"></ctr:BookingStatusBorderColorConverter>
+        <ctr:BookingStatusOpacityConverter x:Key="BookingStatusOpacityConverter"></ctr:BookingStatusOpacityConverter>
+
+        <ctr:RoomSeatNulLCheckConverter x:Key="RoomSeatNulLCheckConverter"></ctr:RoomSeatNulLCheckConverter>
+
+        <ctr:RoomSeatBackgroundConverter x:Key="RoomSeatBackgroundConverter"></ctr:RoomSeatBackgroundConverter>
+        <ctr:RoomSeatBorderConverter x:Key="RoomSeatBorderConverter"></ctr:RoomSeatBorderConverter>
+
+        <ctr:IsVisibileConverter x:Key="IsVisibileConverter"></ctr:IsVisibileConverter>
+        <ctr:TrueFalseConverter x:Key="TrueFalseConverter"></ctr:TrueFalseConverter>
+
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid  x:Name="PageContent" Opacity="0">
+            <ffimageloading:CachedImage  Source="{Binding Movie.Poster}" Aspect="AspectFill"  ></ffimageloading:CachedImage>
+
+
+            <ScrollView HorizontalScrollBarVisibility="Never" Padding="0,2,0,0" VerticalScrollBarVisibility="Never"  Scrolled="ScrollToBottom"  >
+
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                    <!--Info-->
+                    <ScrollView Padding="0,150,0,0" >
+                        <StackLayout Padding="16,135,16,100" >
+                            <StackLayout.Background>
+                                <LinearGradientBrush EndPoint="0,1">
+                                    <GradientStop Color="Transparent"
+                                                  Offset="0.01" />
+                                    <GradientStop Color="#F2232323"
+                                                   Offset="0.1" />
+                                    <GradientStop Color="#F2161616"
+                                                   Offset="0.3" />
+                                    <GradientStop Color="#F2121212"
+                                                   Offset="0.6" />
+                                    <GradientStop Color="#F2080808"
+                                                  Offset="0.8" />
+                                    <GradientStop Color="#F2000000"
+                                                  Offset="0.92" />
+                                    <GradientStop Color="#F2161616"
+                                                  Offset="0.96" />
+                                    <GradientStop Color="Transparent"
+                                                  Offset="1" />
+                                </LinearGradientBrush>
+                            </StackLayout.Background>
+                            <Label  xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Booking Ticket" TextColor="#ff6400" Style="{StaticResource Size_Title}" FontFamily="AorusFont_Bold"></Label>
+                            <Grid RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <!--Title-->
+
+                                <Label VerticalTextAlignment="Center" Grid.Row="0" Grid.Column="0" xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" 
+                                   Text="Movie" Style="{StaticResource Size_Subtitle}"  TextColor="#b3b3b3" HorizontalOptions="FillAndExpand"></Label>
+                                <StackLayout Orientation="Horizontal"  Grid.Row="0"  Grid.Column="1">
+                                    <Label VerticalTextAlignment="Center" Text=": " xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" TextColor="#b3b3b3" Style="{StaticResource Size_Subtitle}"></Label>
+                                    <Label VerticalTextAlignment="Center" xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" 
+                                   Style="{StaticResource Size_Medium}" Text="{Binding Movie.MovieDetails.Title}" TextColor="White" ></Label>
+                                </StackLayout>
+                                <!--Duration-->
+                                <Label VerticalTextAlignment="Center" Grid.Row="1" Grid.Column="0" xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" 
+                                   Text="Duration" Style="{StaticResource Size_Subtitle}"  TextColor="#b3b3b3" HorizontalOptions="FillAndExpand"></Label>
+                                <StackLayout Orientation="Horizontal"  Grid.Row="1"  Grid.Column="1">
+                                    <Label VerticalTextAlignment="Center" Text=": " xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" TextColor="#b3b3b3" Style="{StaticResource Size_Subtitle}"></Label>
+                                    <Label VerticalTextAlignment="Center" xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" 
+                                   Style="{StaticResource Size_Medium}" Text="{Binding Movie.DurationTime}" TextColor="White" ></Label>
+                                </StackLayout>
+                                <!--Ticket Price-->
+                                <Label VerticalTextAlignment="Center" Grid.Row="2" Grid.Column="0" xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" 
+                                   Text="Price (Per)" Style="{StaticResource Size_Subtitle}"  TextColor="#b3b3b3" HorizontalOptions="FillAndExpand"></Label>
+                                <StackLayout Orientation="Horizontal"  Grid.Row="2"  Grid.Column="1">
+                                    <Label VerticalTextAlignment="Center" Text=": " xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" TextColor="#b3b3b3" Style="{StaticResource Size_Subtitle}"></Label>
+                                    <Label VerticalTextAlignment="Center" xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" 
+                                   Style="{StaticResource Size_Medium}" Text="{Binding Movie.MoviePrice}" TextColor="White" ></Label>
+                                </StackLayout>
+                            </Grid>
+
+                            <BoxView HeightRequest="6" Margin="16,6" >
+                                <BoxView.Background>
+                                    <LinearGradientBrush EndPoint="0,1">
+                                        <GradientStop Color="#262626"
+                                                  Offset="0" />
+                                        <GradientStop Color="#363636"
+                                                   Offset="0.5" />
+                                        <GradientStop Color="#262626"
+                                                  Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </BoxView.Background>
+                            </BoxView>
+
+                            <StackLayout IsVisible="{Binding Movie.IsShowing}">
+                                <Label  xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Pick a Date" TextColor="#ff6400" Style="{StaticResource Size_Title}" FontFamily="AorusFont_Bold"></Label>
+                                <ScrollView Orientation="Horizontal" VerticalOptions="StartAndExpand" Margin="-6,0" HorizontalScrollBarVisibility="Never">
+                                    <StackLayout Orientation="Horizontal"  Padding="0,6,0,12" BindableLayout.ItemsSource="{Binding DateList}" Spacing="12">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <!--Available-->
+                                                <Frame Opacity="{Binding IsAvailable,Converter= {StaticResource BookingStatusOpacityConverter}}" IsClippedToBounds="True" CornerRadius="16" Padding="0,16"  WidthRequest="75" MinimumWidthRequest="90" HorizontalOptions="StartAndExpand"     VerticalOptions="Start"
+                                                   xct:ShadowEffect.Color="{Binding Status,Converter={StaticResource BookingStatusColorConverter}}" xct:ShadowEffect.Radius="6" BackgroundColor="#202020" BorderColor="{Binding Status,Converter={StaticResource BookingStatusBorderColorConverter}}" >
+                                                    <StackLayout Spacing="0">
+                                                        <Label HorizontalTextAlignment="Center" xct:ShadowEffect.Color="{Binding Status,Converter={StaticResource BookingStatusColorConverter}}" TextColor="{Binding Status,Converter={StaticResource BookingStatusColorConverter}}"  xct:ShadowEffect.Radius="3" Text="{Binding Day}" Style="{StaticResource Size_Medium}" ></Label>
+                                                        <Label  HorizontalTextAlignment="Center" xct:ShadowEffect.Color="{Binding Status,Converter={StaticResource BookingStatusColorConverter}}" TextColor="{Binding Status,Converter={StaticResource BookingStatusColorConverter}}"  xct:ShadowEffect.Radius="3" Text="{Binding Month}" Style="{StaticResource Size_Medium}" ></Label>
+                                                    </StackLayout>
+                                                    <Frame.GestureRecognizers>
+                                                        <TapGestureRecognizer   Tapped="SelectedDate_Clicked" AutomationId="{Binding Status}" CommandParameter="{Binding Id}"></TapGestureRecognizer>
+                                                    </Frame.GestureRecognizers>
+                                                </Frame>
+
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                        <BindableLayout.EmptyView>
+                                            <StackLayout HorizontalOptions="CenterAndExpand">
+                                                <Label HorizontalTextAlignment="Center" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="5" Text="Preparing Date for you" TextColor="#ff6400" Style="{StaticResource Size_Large}" FontFamily="AorusFont_Bold"></Label>
+                                                <ActivityIndicator   IsRunning="True" Color="#ff6400" WidthRequest="30"  HeightRequest="30"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+
+                                            </StackLayout>
+                                        </BindableLayout.EmptyView>
+
+                                    </StackLayout>
+                                </ScrollView>
+
+
+                                <BoxView HeightRequest="6" Margin="16,6" >
+                                    <BoxView.Background>
+                                        <LinearGradientBrush EndPoint="0,1">
+                                            <GradientStop Color="#262626"
+                                                  Offset="0" />
+                                            <GradientStop Color="#363636"
+                                                   Offset="0.5" />
+                                            <GradientStop Color="#262626"
+                                                  Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </BoxView.Background>
+                                </BoxView>
+
+                                <StackLayout IsVisible="{Binding IsAvailable}">
+                                    <Label  xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Pick a Time" TextColor="#ff6400" Style="{StaticResource Size_Title}" FontFamily="AorusFont_Bold"></Label>
+                                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                                        <StackLayout Orientation="Horizontal" Padding="0,6,0,12" BindableLayout.ItemsSource="{Binding SelectedDateTime}" Spacing="12">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <!--Selected-->
+                                                    <Frame Opacity="{Binding Status,Converter= {StaticResource BookingStatusOpacityConverter}}" IsClippedToBounds="True" CornerRadius="16" Padding="16,10"  HorizontalOptions="StartAndExpand"     VerticalOptions="Start"
+                                                   xct:ShadowEffect.Color="{Binding Status,Converter={StaticResource BookingStatusColorConverter}}" xct:ShadowEffect.Radius="6" BackgroundColor="#202020" BorderColor="{Binding Status,Converter={StaticResource BookingStatusBorderColorConverter}}" >
+                                                        <StackLayout Spacing="0">
+                                                            <Label HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"  xct:ShadowEffect.Color="{Binding Status,Converter={StaticResource BookingStatusColorConverter}}" TextColor="{Binding Status,Converter={StaticResource BookingStatusColorConverter}}"  xct:ShadowEffect.Radius="3"
+                                                           Text="{Binding Time}" Style="{StaticResource Size_Medium}" ></Label>
+                                                        </StackLayout>
+                                                        <Frame.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="SelectedTime_Clicked" CommandParameter="{Binding Time}" AutomationId="{Binding IsFull}"></TapGestureRecognizer>
+                                                        </Frame.GestureRecognizers>
+                                                    </Frame>
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                            <BindableLayout.EmptyView>
+                                                <StackLayout HorizontalOptions="CenterAndExpand">
+                                                    <Label HorizontalTextAlignment="Center" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="5" Text="Preparing Time for you" TextColor="#ff6400" Style="{StaticResource Size_Large}" FontFamily="AorusFont_Bold"></Label>
+                                                    <ActivityIndicator   IsRunning="True" Color="#ff6400" WidthRequest="30"  HeightRequest="30"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+
+                                                </StackLayout>
+                                            </BindableLayout.EmptyView>
+                                        </StackLayout>
+                                    </ScrollView>
+
+                                    <BoxView HeightRequest="6" Margin="16,6" >
+                                        <BoxView.Background>
+                                            <LinearGradientBrush EndPoint="0,1">
+                                                <GradientStop Color="#262626"
+                                                  Offset="0" />
+                                                <GradientStop Color="#363636"
+                                                   Offset="0.5" />
+                                                <GradientStop Color="#262626"
+                                                  Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </BoxView.Background>
+                                    </BoxView>
+
+                                    <!--Seat Selection-->
+                                    <Label  xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Choose your seat" TextColor="#ff6400" Style="{StaticResource Size_Title}" FontFamily="AorusFont_Bold"></Label>
+                                    <StackLayout Orientation="Horizontal" Spacing="16">
+                                        <!--Available-->
+                                        <StackLayout Spacing="3" HorizontalOptions="FillAndExpand">
+                                            <Frame HorizontalOptions="Center" VerticalOptions="Start" IsClippedToBounds="True" CornerRadius="12" Padding="22" 
+                                             xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" BackgroundColor="#262626" BorderColor="#4Dff6400" >
+                                            </Frame>
+                                            <Label HorizontalOptions="Center" VerticalTextAlignment="Center"  xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="3" Text="Available" TextColor="#ff6400" Style="{StaticResource Size_Small}" FontFamily="AorusFont_Regular"></Label>
+                                        </StackLayout>
+                                        <!--Reserved-->
+                                        <StackLayout Spacing="3" HorizontalOptions="FillAndExpand">
+                                            <Frame HorizontalOptions="Center" VerticalOptions="Start" IsClippedToBounds="True" CornerRadius="12" Padding="22" 
+                                             xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" BackgroundColor="#080808" BorderColor="#4Dff6400" >
+                                            </Frame>
+                                            <Label HorizontalOptions="Center" VerticalTextAlignment="Center"  xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="3" Text="Reserved" TextColor="#ff6400" Style="{StaticResource Size_Small}" FontFamily="AorusFont_Regular"></Label>
+
+                                        </StackLayout>
+
+                                        <!--Selected-->
+                                        <StackLayout Spacing="3" HorizontalOptions="FillAndExpand">
+                                            <Frame HorizontalOptions="Center" VerticalOptions="Start" IsClippedToBounds="True" CornerRadius="12" Padding="22" 
+                                             xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" BackgroundColor="#FF6400" BorderColor="#4DFFFFFF" >
+                                            </Frame>
+                                            <Label HorizontalOptions="Center" VerticalTextAlignment="Center"  xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="3" Text="Selected" TextColor="#ff6400" Style="{StaticResource Size_Small}" FontFamily="AorusFont_Regular"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                    <!--Choose Seat-->
+                                    <Label HorizontalTextAlignment="Center" Text="*Scrollable*" Style="{StaticResource Size_Caption}" TextColor="#FF6400" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="2" ></Label>
+                                    <Frame IsClippedToBounds="True" CornerRadius="16" Padding="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                       xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="4" BackgroundColor="#202020"   >
+                                        <ScrollView Orientation="Both" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" x:Name="SeatView" Padding="0,16">
+                                            <StackLayout >
+
+                                                <ffimageloading:CachedImage  Source="MovieScreen" Aspect="AspectFit" Margin="16,0,16,-20" WidthRequest="520" Scale="1.3" ></ffimageloading:CachedImage>
+                                                <Label Margin="0,0,0,32" HorizontalTextAlignment="Center" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="2" Text="Screen" TextColor="#ff6400" Style="{StaticResource Size_Subtitle}" FontFamily="AorusFont_Bold"></Label>
+                                                <!--Number Dispaly-->
+                                                <StackLayout  HorizontalOptions="CenterAndExpand" IsVisible="{Binding RoomSeat.SeatLists,Converter={StaticResource RoomSeatNulLCheckConverter}}" Orientation="Horizontal" Padding="16,0">
+                                                    <StackLayout TranslationX="-14" Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="9">
+                                                        <Label  Padding="10,6" Text="Exit" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="1" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="2" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="3" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="4" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="5" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="6" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout TranslationX="20" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
+                                                        <Label  Padding="10,6" Text="7" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="8" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="9" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="10" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="11" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="12" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="Exit" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+
+                                                    </StackLayout>
+
+
+
+
+                                                </StackLayout>
+
+
+                                                <Grid HorizontalOptions="CenterAndExpand" BindableLayout.ItemsSource="{Binding RoomSeat.SeatLists}" RowSpacing="12" ColumnSpacing="7.5" ColumnDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto">
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Frame Grid.Column="{Binding InGridColumn}" Grid.Row="{Binding InGridRow}" Padding="0" Margin="0" BackgroundColor="Transparent">
+                                                                <Frame.Triggers>
+                                                                    <DataTrigger TargetType="Frame" Binding="{Binding IsLabel}" Value="True">
+                                                                        <Setter Property="Content">
+                                                                            <Setter.Value>
+                                                                                <Label Text="{Binding Code}" HorizontalTextAlignment="Center"  TextColor="White" Margin="6,0"
+                                                                               xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}" />
+                                                                            </Setter.Value>
+                                                                        </Setter>
+                                                                    </DataTrigger>
+                                                                    <DataTrigger TargetType="Frame" Binding="{Binding IsLabel}" Value="False">
+                                                                        <Setter Property="Content">
+                                                                            <Setter.Value>
+                                                                                <Frame HorizontalOptions="Center" VerticalOptions="Start" IsClippedToBounds="True" CornerRadius="10" Padding="16" 
+                                                                               xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" BackgroundColor="{Binding Status,Converter={StaticResource RoomSeatBackgroundConverter}}" BorderColor="{Binding Status,Converter={StaticResource RoomSeatBorderConverter}}" >
+                                                                                    <Frame.GestureRecognizers   >
+                                                                                        <TapGestureRecognizer  Tapped="SelectedSeat_Clicked" CommandParameter="{Binding Code}" AutomationId="{Binding Status}" ></TapGestureRecognizer>
+                                                                                    </Frame.GestureRecognizers>
+                                                                                </Frame>
+                                                                            </Setter.Value>
+                                                                        </Setter>
+                                                                    </DataTrigger>
+                                                                </Frame.Triggers>
+                                                            </Frame>
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
+                                                    <BindableLayout.EmptyView>
+                                                        <StackLayout TranslationX="50" HorizontalOptions="CenterAndExpand">
+                                                            <Label HorizontalTextAlignment="Center" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="5" Text="We are arranging seats for you" TextColor="#ff6400" Style="{StaticResource Size_Large}" FontFamily="AorusFont_Bold"></Label>
+                                                            <ActivityIndicator   IsRunning="True" Color="#ff6400" WidthRequest="30"  HeightRequest="30"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+
+                                                        </StackLayout>
+                                                    </BindableLayout.EmptyView>
+                                                </Grid>
+                                                <!--Number Dispaly-->
+                                                <StackLayout  HorizontalOptions="CenterAndExpand" IsVisible="{Binding RoomSeat.SeatLists,Converter={StaticResource RoomSeatNulLCheckConverter}}" Orientation="Horizontal" Padding="16,0">
+                                                    <StackLayout TranslationX="-14" Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="9">
+                                                        <Label  Padding="10,6" Text="Entry" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="1" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="2" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="3" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="4" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="5" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="6" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                    </StackLayout>
+                                                    <StackLayout TranslationX="20" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
+                                                        <Label  Padding="10,6" Text="7" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="8" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="9" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="10" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="11" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="12" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+                                                        <Label  Padding="10,6" Text="Entry" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Medium}"></Label>
+
+                                                    </StackLayout>
+
+
+
+
+                                                </StackLayout>
+
+
+
+                                            </StackLayout>
+                                        </ScrollView>
+                                    </Frame>
+                                    <!--To Review-->
+                                    <Label  xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Number of selected seat:" TextColor="#ff6400" Style="{StaticResource Size_Title}" FontFamily="AorusFont_Bold"></Label>
+                                    <StackLayout Orientation="Horizontal"   >
+                                        <StackLayout  Spacing="0">
+                                            <Label  xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="{Binding NumOfSeat}" VerticalTextAlignment="Center" TextColor="#ff6400" Style="{StaticResource Size_Header}"></Label>
+                                            <Label   xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="{Binding SeatTotalPrice,StringFormat='Total: {0}'}" VerticalTextAlignment="End" TextColor="#ff6400" Style="{StaticResource Size_Subtitle}" FontFamily="AorusFont_Bold"></Label>
+                                        </StackLayout>
+
+                                        <StackLayout  HorizontalOptions="EndAndExpand"  VerticalOptions="Start">
+                                            <Frame IsVisible="{Binding ReviewButtonText,Converter={StaticResource IsVisibileConverter}}"  Margin=" 0,6,0,0" IsClippedToBounds="True" CornerRadius="16" Padding="16,6" HorizontalOptions="End"
+                                            xct:ShadowEffect.Color="{Binding ReviewButtonText,Converter={StaticResource BookingStatusColorConverter}}" xct:ShadowEffect.Radius="6" BackgroundColor="#202020" BorderColor="{Binding ReviewButtonText,Converter={StaticResource BookingStatusBorderColorConverter}}">
+                                                <Label  xct:ShadowEffect.Color="{Binding ReviewButtonText,Converter={StaticResource BookingStatusColorConverter}}" TextColor="{Binding ReviewButtonText,Converter={StaticResource BookingStatusColorConverter}}"  xct:ShadowEffect.Radius="3" Text="Clear All" Style="{StaticResource Size_Medium}" ></Label>
+
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="ClearAllSelectedSeat_Clicked" ></TapGestureRecognizer>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+                                            <Frame  IsClippedToBounds="True" CornerRadius="16" Padding="16,6" Margin=" 0,6,0,0" 
+                                            xct:ShadowEffect.Color="{Binding ReviewButtonText,Converter={StaticResource BookingStatusColorConverter}}" xct:ShadowEffect.Radius="6" BackgroundColor="#202020" BorderColor="{Binding ReviewButtonText,Converter={StaticResource BookingStatusBorderColorConverter}}">
+                                                <Label  xct:ShadowEffect.Color="{Binding ReviewButtonText,Converter={StaticResource BookingStatusColorConverter}}" TextColor="{Binding ReviewButtonText,Converter={StaticResource BookingStatusColorConverter}}"  xct:ShadowEffect.Radius="3" Text="{Binding ReviewButtonText}" Style="{StaticResource Size_Medium}" ></Label>
+
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="ReviewPayment_Clicked" ></TapGestureRecognizer>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+
+                                        </StackLayout>
+
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout IsVisible="{Binding IsAvailable,Converter={StaticResource TrueFalseConverter}}">
+                                    <Label HorizontalTextAlignment="Center" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="5" Text="The date has picked is Unavailable" TextColor="#ff6400" Style="{StaticResource Size_Large}" FontFamily="AorusFont_Bold"></Label>
+                                    <Label HorizontalTextAlignment="Center" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="5" Text="Please pick another date." TextColor="#ff6400" Style="{StaticResource Size_Large}" FontFamily="AorusFont_Bold"></Label>
+
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout IsVisible="{Binding Movie.IsShowing,Converter={StaticResource TrueFalseConverter}}">
+                                <Label HorizontalTextAlignment="Center" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="5" Text="The Movie is Comming Soon." TextColor="#ff6400" Style="{StaticResource Size_Large}" FontFamily="AorusFont_Bold"></Label>
+                                <Label HorizontalTextAlignment="Center" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="5" Text="We will open booking before 7 days by" TextColor="#ff6400" Style="{StaticResource Size_Large}" FontFamily="AorusFont_Bold"></Label>
+                                <Label HorizontalTextAlignment="Center" xct:ShadowEffect.Color="#FF6400"  xct:ShadowEffect.Radius="5" Text="{Binding Movie.ReleaseDate}" TextColor="#FFFFFF" Style="{StaticResource Size_Large}" FontFamily="AorusFont_Bold"></Label>
+
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+
+                </StackLayout>
+            </ScrollView>
+
+
+
+            <!-- Header -->
+            <FlexLayout  Direction="Row" JustifyContent="SpaceBetween" VerticalOptions="Start" HeightRequest="60"
+                                xct:ShadowEffect.Color="Black" xct:ShadowEffect.Radius="60" >
+                <FlexLayout.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="Black"
+                          Offset="0.4" />
+                        <GradientStop Color="Transparent"
+                          Offset="1.0" />
+                    </LinearGradientBrush>
+                </FlexLayout.Background>
+
+                <StackLayout Padding="6,10" Margin="0,0,8,0">
+                    <Frame Padding="6" BackgroundColor="#B3404040" CornerRadius="16"   >
+                        <Image Source="BackIconWhite" Aspect="AspectFit" WidthRequest="35"></Image>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Nav_ClosePage"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+
+            </FlexLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

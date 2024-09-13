@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:local="clr-namespace:BXM308_Assignment.CustomView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="BXM308_Assignment.MovieDetailPage"
+             NavigationPage.HasNavigationBar="False" BackgroundColor="#080808" >
+    <ContentPage.Content >
+        <Grid x:Name="PageContent" Opacity="0">
+
+            <!--Background-->
+            <ffimageloading:CachedImage Source="{Binding Movie.Poster}" FadeAnimationEnabled="True" DownsampleToViewSize="True"  Aspect="AspectFill"
+                                     />
+
+            <!--Main Content-->
+            <ScrollView Padding="14,120,14,0"  BackgroundColor="#66888a89" VerticalScrollBarVisibility="Never"
+                        VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <pancake:PancakeView BackgroundColor="#080808" CornerRadius="30,30,0,0"  xct:ShadowEffect.Color="Black" >
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                        <!--Main Image-->
+                        <ScrollView HeightRequest="280" VerticalScrollBarVisibility="Never" >
+                            <ffimageloading:CachedImage Source="{Binding Movie.Poster}" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
+                        </ScrollView>
+                        <BoxView HeightRequest="20" Margin="0,-20,0,0"  >
+                            <BoxView.Background>
+                                <LinearGradientBrush EndPoint="0,1">
+                                    <GradientStop Color="Transparent"
+                                                  Offset="0" />
+                                    <GradientStop Color="#080808"
+                                                  Offset="1.0" />
+                                </LinearGradientBrush>
+                            </BoxView.Background>
+                        </BoxView>
+                        <StackLayout Padding="6,0,6,60" Margin="0,0,0,6" Orientation="Horizontal" >
+                            <!--Info-->
+                            <StackLayout Spacing="0" Margin="0" HorizontalOptions="FillAndExpand" >
+                                <!--Title-->
+                                <Label xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" Text="{Binding Movie.MovieDetails.Title}" Style="{StaticResource Size_Title}"  TextColor="White" MaxLines="2" LineBreakMode="TailTruncation"
+                                       HorizontalTextAlignment="Center"></Label>
+                                <!--Duration, Genre, Release Date-->
+                                <Label xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="2" Margin="16,6,16,0" Style="{StaticResource Size_Caption}"  HorizontalTextAlignment="Center" LineHeight="1.3">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Movie.DurationTime}"></Span>
+                                            <Span Text=" · "></Span>
+                                            <Span Text="{Binding Movie.MovieDetails.Genre}"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Text="{Binding Movie.ReleaseDate}" Margin="16,6,16,0" Style="{StaticResource Size_Caption}"  HorizontalTextAlignment="Center" ></Label>
+                                <!--Star Review-->
+                                <StackLayout IsVisible="{Binding Movie.IsShowing}" HorizontalOptions="Center" Orientation="Horizontal" Spacing="3">
+                                    <Label  xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" 
+                                                       VerticalTextAlignment="Center" Text="{Binding Movie.StarRate}" Style="{StaticResource Size_Caption}" ></Label>
+
+                                    <local:StarView FillColors="#FF6400" Rating="{Binding Movie.FirstStar}"  Style="{StaticResource FirstStarMargin}"/>
+                                    <local:StarView FillColors="#FF6400" Rating="{Binding Movie.SecondStar}" Style="{StaticResource AfterStarMargin}"/>
+                                    <local:StarView FillColors="#FF6400" Rating="{Binding Movie.ThirdStar}" Style="{StaticResource AfterStarMargin}"/>
+                                    <local:StarView FillColors="#FF6400" Rating="{Binding Movie.FourthStar}" Style="{StaticResource AfterStarMargin}"/>
+                                    <local:StarView FillColors="#FF6400" Rating="{Binding Movie.FifthStar}" Style="{StaticResource AfterStarMargin}"/>
+
+                                    <Label xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3"   
+                                                       Text="{Binding Movie.Review,StringFormat=' ({0} reviews)'}" Style="{StaticResource Size_Caption}" ></Label>
+                                </StackLayout>
+
+                                <BoxView HeightRequest="6" Margin="16,6" >
+                                    <BoxView.Background>
+                                        <LinearGradientBrush EndPoint="0,1">
+                                            <GradientStop Color="#080808"
+                                                  Offset="0" />
+                                            <GradientStop Color="#363636"
+                                                   Offset="0.5" />
+                                            <GradientStop Color="#080808"
+                                                  Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </BoxView.Background>
+                                </BoxView>
+                                <!--Trailer-->
+                                <Label Margin="6,0" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Official Trailer" Style="{StaticResource Size_Large}" ></Label>
+                                <Frame Margin="-8,6,-8,16" IsClippedToBounds="True" CornerRadius="16" Padding="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                                       xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="4" BackgroundColor="#202020"   >
+                                    <WebView Opacity="0" BackgroundColor="#080808" xct:CornerRadiusEffect.CornerRadius="16" HeightRequest="250"  x:Name="TrailerLink" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  >
+                                    </WebView>
+                                </Frame>
+
+                                <!--Description-->
+                                <Label Margin="6,0" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="About the movie" Style="{StaticResource Size_Large}" ></Label>
+                                <Label Margin="6,0" xct:ShadowEffect.Color="#b3b3b3" xct:ShadowEffect.Radius="2" Text="{Binding Movie.MovieDetails.Description}" Style="{StaticResource Size_Subtitle}"  TextColor="#d9dedc" FontFamily="AorusFont_Regular" 
+                                       LineHeight="0.9"      ></Label>
+
+                                <BoxView HeightRequest="6" Margin="16,6" >
+                                    <BoxView.Background>
+                                        <LinearGradientBrush EndPoint="0,1">
+                                            <GradientStop Color="#080808"
+                                                  Offset="0" />
+                                            <GradientStop Color="#363636"
+                                                   Offset="0.5" />
+                                            <GradientStop Color="#080808"
+                                                  Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </BoxView.Background>
+                                </BoxView>
+                                <!--Director-->
+                                <Label Margin="6,0" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Director" Style="{StaticResource Size_Large}" ></Label>
+                                <ScrollView Margin="-6,0,-6,0" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                                    <StackLayout Orientation="Horizontal" Padding="16,0" BindableLayout.ItemsSource="{Binding Movie.MovieDetails.Director}" >
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout HorizontalOptions="Center" >
+                                                    <Frame IsClippedToBounds="True" CornerRadius="16" Padding="2" HeightRequest="120" WidthRequest="90" MinimumHeightRequest="120" MinimumWidthRequest="90" HorizontalOptions="Center" VerticalOptions="Start"
+                                                           xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="4" BackgroundColor="#202020" >
+                                                        <ffimageloading:CachedImage    xct:CornerRadiusEffect.CornerRadius="16"  Source="{Binding Image}" Aspect="AspectFill" VerticalOptions="FillAndExpand" />
+
+                                                    </Frame>
+                                                    <Label HorizontalTextAlignment="Center" WidthRequest="90" Margin="6,0" xct:ShadowEffect.Color="#b3b3b3" xct:ShadowEffect.Radius="2" Style="{StaticResource Size_Subtitle}"  TextColor="#d9dedc" FontFamily="AorusFont_Regular" Text="{Binding Name}"></Label>
+                                                </StackLayout>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </ScrollView>
+
+                                <BoxView HeightRequest="6" Margin="16,6" >
+                                    <BoxView.Background>
+                                        <LinearGradientBrush EndPoint="0,1">
+                                            <GradientStop Color="#080808"
+                                                  Offset="0" />
+                                            <GradientStop Color="#363636"
+                                                   Offset="0.5" />
+                                            <GradientStop Color="#080808"
+                                                  Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </BoxView.Background>
+                                </BoxView>
+                                <!--Actor-->
+                                <Label Margin="6,0" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Movie Cast" Style="{StaticResource Size_Large}" ></Label>
+
+                                <ScrollView Margin="-6,0 " Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                                    <StackLayout Orientation="Horizontal" Padding="16,0" BindableLayout.ItemsSource="{Binding Movie.MovieDetails.Actor}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout HorizontalOptions="Center" >
+                                                    <Frame IsClippedToBounds="True" CornerRadius="16" Padding="2" HeightRequest="120" WidthRequest="90" MinimumHeightRequest="120" MinimumWidthRequest="90" HorizontalOptions="Center" VerticalOptions="Start"
+                                                           xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="4" BackgroundColor="#202020" >
+                                                        <ffimageloading:CachedImage   xct:CornerRadiusEffect.CornerRadius="16"  Source="{Binding Image}" Aspect="AspectFill" VerticalOptions="FillAndExpand" />
+                                                    </Frame>
+                                                    <Label HorizontalTextAlignment="Center" WidthRequest="90" Margin="6,0" xct:ShadowEffect.Color="#b3b3b3" xct:ShadowEffect.Radius="2" Style="{StaticResource Size_Subtitle}"  TextColor="#d9dedc" FontFamily="AorusFont_Regular" Text="{Binding Name}"></Label>
+                                                </StackLayout>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </ScrollView>
+                                <BoxView HeightRequest="6" Margin="16,6" >
+                                    <BoxView.Background>
+                                        <LinearGradientBrush EndPoint="0,1">
+                                            <GradientStop Color="#080808"
+                                                  Offset="0" />
+                                            <GradientStop Color="#363636"
+                                                   Offset="0.5" />
+                                            <GradientStop Color="#080808"
+                                                  Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </BoxView.Background>
+                                </BoxView>
+
+                                <!--Photo-->
+                                <Label Margin="6,0" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Movie Photo" Style="{StaticResource Size_Large}" ></Label>
+                                <ScrollView Margin="-6,0,-6,6" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                                    <StackLayout Orientation="Horizontal" Padding="16,0" BindableLayout.ItemsSource="{Binding Movie.MovieDetails.Image}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout HorizontalOptions="Center" Margin="6,0" Padding="0,0,0,6">
+                                                    <Frame IsClippedToBounds="True" CornerRadius="16" Padding="2" HeightRequest="150" WidthRequest="200" MinimumHeightRequest="150" MinimumWidthRequest="200" HorizontalOptions="Center" VerticalOptions="Start"
+                                                           xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="4" BackgroundColor="#202020" >
+                                                        <ffimageloading:CachedImage xct:CornerRadiusEffect.CornerRadius="16"  Source="{Binding Image}" Aspect="AspectFill" VerticalOptions="FillAndExpand" />
+
+                                                    </Frame>
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="Popup_PhotoView" CommandParameter="{Binding Name}"></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
+
+                                                </StackLayout>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </ScrollView>
+
+                                <BoxView HeightRequest="6" Margin="16,6" >
+                                    <BoxView.Background>
+                                        <LinearGradientBrush EndPoint="0,1">
+                                            <GradientStop Color="#080808"
+                                                  Offset="0" />
+                                            <GradientStop Color="#363636"
+                                                   Offset="0.5" />
+                                            <GradientStop Color="#080808"
+                                                  Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </BoxView.Background>
+                                </BoxView>
+
+                                <!--Review-->
+                                <StackLayout Orientation="Horizontal" Padding="0" Spacing="0">
+                                    <Label Margin="6,0,0,0" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" HorizontalOptions="Start" Text="{Binding Movie.Review}" Style="{StaticResource Size_Large}" ></Label>
+                                    <Label Margin="0,0,6,0" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" HorizontalOptions="FillAndExpand" Text="{Binding Movie.StarRate,StringFormat=' Reviews ({0})'}" Style="{StaticResource Size_Large}" ></Label>
+                                    <Frame xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.OffsetY="-6"  xct:ShadowEffect.Radius="6" VerticalOptions="End"
+                                           Padding="6" BackgroundColor="#202020" BorderColor="#ff6400"  HorizontalOptions="End"  CornerRadius="12">
+                                        <Label Margin="6,0" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" TextColor="#FF6400"  Text="Load >" Style="{StaticResource Size_Medium}" ></Label>
+                                    </Frame>
+
+                                </StackLayout>
+
+                                <!--Recently Review 3-->
+
+                                <StackLayout Spacing="0" Padding="6,0">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame IsClippedToBounds="True" CornerRadius="100"  Padding="2" HeightRequest="60" WidthRequest="60"  MinimumWidthRequest="70" HorizontalOptions="Start"   VerticalOptions="Center"
+                           xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="4" BackgroundColor="#202020" >
+                                            <ffimageloading:CachedImage  Source="RyanReynolds"  Aspect="AspectFill" xct:CornerRadiusEffect.CornerRadius="16" />
+                                        </Frame>
+                                        <StackLayout Spacing="0">
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout Spacing="0"  HorizontalOptions="StartAndExpand">
+                                                    <Label Text="Ryan Reynolds"  xct:ShadowEffect.Color="#ffffff"  xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Subtitle}" VerticalOptions="Start" HorizontalOptions="Start" ></Label>
+                                                    <Label Text="30-08-2023 14:59:30" xct:ShadowEffect.Color="#777777"  xct:ShadowEffect.Radius="1" Style="{StaticResource Size_Micro}" Opacity="0.7" ></Label>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="0,10,16,0">
+                                                    <local:StarView FillColors="#FF6400" Rating="1"  Style="{StaticResource FirstStarMargin}"/>
+                                                    <Label Text="5"  xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Small}"></Label>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                            <Label MaxLines="3" LineBreakMode="TailTruncation"  xct:ShadowEffect.Color="#ffffff"  xct:ShadowEffect.Radius="2" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris "></Label>
+
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <BoxView HeightRequest="2" Margin="6,10,6,6" >
+                                        <BoxView.Background>
+                                            <LinearGradientBrush EndPoint="0,1">
+                                                <GradientStop Color="#262626"
+                                                  Offset="0" />
+                                                <GradientStop Color="#363636"
+                                                   Offset="0.5" />
+                                                <GradientStop Color="#262626"
+                                                  Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </BoxView.Background>
+                                    </BoxView>
+                                </StackLayout>
+                                <StackLayout Spacing="0" Padding="6,0">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame IsClippedToBounds="True" CornerRadius="100"  Padding="2" HeightRequest="60" WidthRequest="60"  MinimumWidthRequest="70" HorizontalOptions="Start"   VerticalOptions="Center"
+                           xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="4" BackgroundColor="#202020" >
+                                            <ffimageloading:CachedImage  Source="RyanReynolds"  Aspect="AspectFill" xct:CornerRadiusEffect.CornerRadius="16" />
+                                        </Frame>
+                                        <StackLayout Spacing="0">
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout Spacing="0"  HorizontalOptions="StartAndExpand">
+                                                    <Label Text="Ryan Reynolds"  xct:ShadowEffect.Color="#ffffff"  xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Subtitle}" VerticalOptions="Start" HorizontalOptions="Start" ></Label>
+                                                    <Label Text="30-08-2023 14:59:30" xct:ShadowEffect.Color="#777777"  xct:ShadowEffect.Radius="1" Style="{StaticResource Size_Micro}" Opacity="0.7" ></Label>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="0,10,16,0">
+                                                    <local:StarView FillColors="#FF6400" Rating="1"  Style="{StaticResource FirstStarMargin}"/>
+                                                    <Label Text="5"  xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Small}"></Label>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                            <Label MaxLines="3" LineBreakMode="TailTruncation"  xct:ShadowEffect.Color="#ffffff"  xct:ShadowEffect.Radius="2" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris "></Label>
+
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <BoxView HeightRequest="2" Margin="6,10,6,6" >
+                                        <BoxView.Background>
+                                            <LinearGradientBrush EndPoint="0,1">
+                                                <GradientStop Color="#262626"
+                                                  Offset="0" />
+                                                <GradientStop Color="#363636"
+                                                   Offset="0.5" />
+                                                <GradientStop Color="#262626"
+                                                  Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </BoxView.Background>
+                                    </BoxView>
+                                </StackLayout>
+                                <StackLayout Spacing="0" Padding="6,0">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Frame IsClippedToBounds="True" CornerRadius="100"  Padding="2" HeightRequest="60" WidthRequest="60"  MinimumWidthRequest="70" HorizontalOptions="Start"   VerticalOptions="Center"
+                           xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="4" BackgroundColor="#202020" >
+                                            <ffimageloading:CachedImage  Source="RyanReynolds"  Aspect="AspectFill" xct:CornerRadiusEffect.CornerRadius="16" />
+                                        </Frame>
+                                        <StackLayout Spacing="0">
+                                            <StackLayout Orientation="Horizontal">
+                                                <StackLayout Spacing="0"  HorizontalOptions="StartAndExpand">
+                                                    <Label Text="Ryan Reynolds"  xct:ShadowEffect.Color="#ffffff"  xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Subtitle}" VerticalOptions="Start" HorizontalOptions="Start" ></Label>
+                                                    <Label Text="30-08-2023 14:59:30" xct:ShadowEffect.Color="#777777"  xct:ShadowEffect.Radius="1" Style="{StaticResource Size_Micro}" Opacity="0.7" ></Label>
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="0,10,16,0">
+                                                    <local:StarView FillColors="#FF6400" Rating="1"  Style="{StaticResource FirstStarMargin}"/>
+                                                    <Label Text="5"  xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Small}"></Label>
+                                                </StackLayout>
+                                            </StackLayout>
+
+                                            <Label MaxLines="3" LineBreakMode="TailTruncation"  xct:ShadowEffect.Color="#ffffff"  xct:ShadowEffect.Radius="2" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris "></Label>
+
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <BoxView HeightRequest="2" Margin="6,10,6,6" >
+                                        <BoxView.Background>
+                                            <LinearGradientBrush EndPoint="0,1">
+                                                <GradientStop Color="#262626"
+                                                  Offset="0" />
+                                                <GradientStop Color="#363636"
+                                                   Offset="0.5" />
+                                                <GradientStop Color="#262626"
+                                                  Offset="1.0" />
+                                            </LinearGradientBrush>
+                                        </BoxView.Background>
+                                    </BoxView>
+                                </StackLayout>
+                            </StackLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer  CommandParameter="{Binding MovieId}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                    </StackLayout>
+                </pancake:PancakeView>
+
+
+            </ScrollView>
+            <!--Booking Button-->
+            <Frame xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.OffsetY="-6"  xct:ShadowEffect.Radius="6" VerticalOptions="End"
+                         Padding="36,6,30,6" BackgroundColor="#202020" BorderColor="#ff6400"  HorizontalOptions="Center" Margin="0,16" CornerRadius="12">
+                <Label  Text="Book Tickets" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Large}"  TextColor="#FF6400"></Label>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Nav_BookingTicketPage" ></TapGestureRecognizer>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <!-- Header -->
+            <FlexLayout  Direction="Row" JustifyContent="SpaceBetween" VerticalOptions="Start" HeightRequest="60"
+                                xct:ShadowEffect.Color="Black" xct:ShadowEffect.Radius="60" >
+                <FlexLayout.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="Black"
+                          Offset="0.4" />
+                        <GradientStop Color="Transparent"
+                          Offset="1.0" />
+                    </LinearGradientBrush>
+                </FlexLayout.Background>
+
+                <StackLayout Padding="6,10" Margin="0,0,8,0">
+                    <Frame Padding="6" BackgroundColor="#B3404040" CornerRadius="16"   >
+                        <Image Source="BackIconWhite" Aspect="AspectFit" WidthRequest="35"></Image>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Nav_ClosePage"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+
+            </FlexLayout>
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

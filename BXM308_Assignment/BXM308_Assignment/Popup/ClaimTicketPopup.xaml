@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns:pages="http://rotorgames.com"
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+                 xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                 xmlns:Cards="clr-namespace:PanCardView;assembly=PanCardView"
+                 xmlns:processors="clr-namespace:PanCardView.Processors;assembly=PanCardView"
+                 xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                 x:Class="BXM308_Assignment.Popup.ClaimTicketPopup"
+                 NavigationPage.HasNavigationBar="False" BackgroundColor="#99080808">
+    <pages:PopupPage.Animation>
+        <!--           EasingIn="SpringOut"
+                       EasingOut="SpringIn"  会滑过头 -->
+
+        <pages:MoveAnimation DurationIn="200" 
+                              DurationOut="200"
+                              PositionIn="Bottom"
+                              PositionOut="Bottom" >
+
+        </pages:MoveAnimation>
+    </pages:PopupPage.Animation>
+    <ScrollView VerticalScrollBarVisibility="Never"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+        <StackLayout Padding="0,180,0,0" >
+            <pancake:PancakeView   Padding="16,10" CornerRadius="32,32,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#121212" >
+                <StackLayout Spacing="0">
+                    <Grid>
+
+                        <!--Code-->
+                        <StackLayout Margin="0,24,0,0" Spacing="0" HorizontalOptions="Center">
+                            <Label HorizontalOptions="Center" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Show this to the counter" TextColor="#ff6400" Style="{StaticResource Size_Subtitle}" ></Label>
+
+                            <ffimageloading:CachedImage Source="ScanQRImage" HeightRequest="150" HorizontalOptions="Center" VerticalOptions="Start"></ffimageloading:CachedImage>
+
+                        </StackLayout>
+                        <Frame Margin="6" Padding="8" BackgroundColor="#B3080808" CornerRadius="16" VerticalOptions="Start" HorizontalOptions="Start"   >
+                            <Image Source="BackIconWhite" Aspect="AspectFit" WidthRequest="35"></Image>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Nav_ClosePoup"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+
+                    <BoxView HeightRequest="20"  >
+                        <BoxView.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="#080808"
+                                                  Offset="0" />
+                                <GradientStop Color="#202020"
+                                                   Offset="0.5" />
+                                <GradientStop Color="#080808"
+                                                  Offset="1.0" />
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+
+                    <Label Margin="6,3,6,-16" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Ticket Details" TextColor="#ff6400" Style="{StaticResource Size_Large}" FontFamily="AorusFont_Bold"></Label>
+                    <!--Details-->
+                    <Grid RowSpacing="0" Margin="0,0,0,6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="1" Grid.Column="0"  Opacity=".7" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="Movie : " Style="{StaticResource Size_Subtitle}"></Label>
+                        <Label Grid.Row="1" Grid.Column="1" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="End" Text="{Binding Ticket.MovieTitle}" Style="{StaticResource Size_Medium}"></Label>
+
+                        <Label Grid.Row="2" Grid.Column="0"  Opacity=".7" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="Duration : " Style="{StaticResource Size_Subtitle}"></Label>
+                        <Label Grid.Row="2" Grid.Column="1" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="End" Text="{Binding Ticket.DurationTime}" Style="{StaticResource Size_Medium}"></Label>
+
+                    </Grid>
+                    <!--Carousel Ticket List-->
+                    <Cards:CoverFlowView Padding="0,6"  BackgroundColor="Transparent" PositionShiftValue="28"  IndicatorView="ForCodeList"
+                                          ItemsSource="{Binding Ticket.CodeList}" IsCyclical="False">
+                        <x:Arguments>
+                            <processors:CoverFlowProcessor
+                            ScaleFactor="0.90"
+                            OpacityFactor="0.9" />
+                        </x:Arguments>
+                        <Cards:CoverFlowView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame Margin="20,0" xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="3" BackgroundColor="#363636" Padding="16,10" CornerRadius="16">
+                                        <StackLayout>
+                                            <Grid>
+                                                <StackLayout Spacing="0">
+                                                    <Label Opacity=".7" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="Room:" Style="{StaticResource Size_Subtitle}"></Label>
+                                                    <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.Ticket.DisplayRoomId}" Style="{StaticResource Size_Title}"></Label>
+                                                </StackLayout>
+                                                <StackLayout  Spacing="0" HorizontalOptions="End">
+                                                    <Label Opacity=".7" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="Seat:" Style="{StaticResource Size_Subtitle}"></Label>
+                                                    <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="{Binding .}" Style="{StaticResource Size_Title}"></Label>
+                                                </StackLayout>
+                                            </Grid>
+                                            <BoxView HeightRequest="3" BackgroundColor="#262626" Opacity=".7"></BoxView>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Row="0" Grid.Column="0" Opacity=".7" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Center" Text="Date: " Style="{StaticResource Size_Subtitle}"></Label>
+                                                <Label Grid.Row="0" Grid.Column="1"  xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.Ticket.Date}" Style="{StaticResource Size_Title}"></Label>
+                                                <Label Grid.Row="1" Grid.Column="0"  Opacity=".7" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Center" Text="Time: " Style="{StaticResource Size_Subtitle}"></Label>
+                                                <Label Grid.Row="1" Grid.Column="1" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.Ticket.Time}" Style="{StaticResource Size_Title}"></Label>
+
+                                            </Grid>
+
+                                        </StackLayout>
+                                    </Frame>
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </Cards:CoverFlowView.ItemTemplate>
+                    </Cards:CoverFlowView>
+
+                    <IndicatorView Margin="0,12,0,0" x:Name="ForCodeList" IndicatorColor="#FFFFFF" SelectedIndicatorColor="#FF6400" IndicatorsShape="Circle"></IndicatorView>
+
+                    <!--Payment-->
+                    <BoxView HeightRequest="20"  Margin="0,16,0,0">
+                        <BoxView.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="#080808"
+                                                  Offset="0" />
+                                <GradientStop Color="#202020"
+                                                   Offset="0.5" />
+                                <GradientStop Color="#080808"
+                                                  Offset="1.0" />
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+
+                    <Label Margin="6,3" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Payment Details" TextColor="#ff6400" Style="{StaticResource Size_Large}" FontFamily="AorusFont_Bold"></Label>
+
+                    <Grid RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0"  Opacity=".7" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="Ticket No: " Style="{StaticResource Size_Subtitle}"></Label>
+                        <Label Grid.Row="0" Grid.Column="1" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="End" Text="{Binding Ticket.Id}" Style="{StaticResource Size_Medium}"></Label>
+
+                        <Label Grid.Row="1" Grid.Column="0"  Opacity=".7" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="Subtotal: " Style="{StaticResource Size_Subtitle}"></Label>
+                        <Label Grid.Row="1" Grid.Column="1" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="End" Text="{Binding Ticket.SubTotal}" Style="{StaticResource Size_Medium}"></Label>
+
+
+                        <Label Grid.Row="2" Grid.Column="0"  Opacity=".7" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="Tax(6% SST): " Style="{StaticResource Size_Subtitle}"></Label>
+                        <Label Grid.Row="2" Grid.Column="1" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="End" Text="{Binding Ticket.TotalTax}" Style="{StaticResource Size_Medium}"></Label>
+
+
+                        <Label Grid.Row="3" Grid.Column="0"  Opacity=".7" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="Total Paid: " Style="{StaticResource Size_Subtitle}"></Label>
+                        <Label Grid.Row="3" Grid.Column="1" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="End" Text="{Binding Ticket.AmountDisplay}" Style="{StaticResource Size_Medium}"></Label>
+
+                        <Label Grid.Row="4" Grid.Column="0"  Opacity=".7" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="Start" Text="Payment Time: " Style="{StaticResource Size_Subtitle}"></Label>
+                        <Label Grid.Row="4" Grid.Column="1" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" FontFamily="AorusFont_Bold" HorizontalOptions="End" Text="{Binding Ticket.PaymentTime}" Style="{StaticResource Size_Medium}"></Label>
+
+                    </Grid>
+
+                    <Frame  VerticalOptions="End" Margin="70,16,70,16" Padding="12" CornerRadius="32" BackgroundColor="#080808" BorderColor="#30FFFFFF" xct:ShadowEffect.Color="#080808" xct:ShadowEffect.Radius="6">
+                        <Label xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding ClaimStatus}" Style="{StaticResource Size_Medium}"></Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Complete_Clicked"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+
+                <pancake:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Block_Panel"></TapGestureRecognizer>
+                </pancake:PancakeView.GestureRecognizers>
+            </pancake:PancakeView>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Nav_ClosePoup"></TapGestureRecognizer>
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+
+
+
+    </ScrollView>
+
+</pages:PopupPage>

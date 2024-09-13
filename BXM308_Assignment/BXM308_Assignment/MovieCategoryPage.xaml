@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converter="clr-namespace:BXM308_Assignment.Converter"      
+             NavigationPage.HasNavigationBar="False" BackgroundColor="#080808"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:local="clr-namespace:BXM308_Assignment.CustomView"
+             x:Class="BXM308_Assignment.MovieCategoryPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:TrueFalseConverter x:Key="TrueFalseConverter"></converter:TrueFalseConverter>
+            <converter:MovieCollectionViewHeightConverter x:Key="MovieCollectionViewHeightConverter"></converter:MovieCollectionViewHeightConverter>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid x:Name="PageContent"  Opacity="0" IsVisible="true">
+
+            <ScrollView VerticalOptions="FillAndExpand" Padding="0,70,0,50">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                    <StackLayout Orientation="Horizontal"   HorizontalOptions="FillAndExpand" Padding="6,0" >
+
+                        <Frame Padding="8" BackgroundColor="#B3080808" CornerRadius="16" VerticalOptions="CenterAndExpand"  HorizontalOptions="Start"  >
+                            <Image Source="SearchWhite" Aspect="AspectFit" WidthRequest="30"></Image>
+                        </Frame>
+                        <Entry x:Name="HomeSearchEntry" Style="{StaticResource Size_Medium}" FontFamily="AorusFont_Bold" TextColor="White" Placeholder="Search Movie..." PlaceholderColor="#8c8c8c" ClearButtonVisibility="WhileEditing" 
+                               HorizontalOptions="FillAndExpand" TextChanged="SearchMovie_Changed" >
+                        </Entry>
+                    </StackLayout>
+
+                    <BoxView HeightRequest="20"  >
+                        <BoxView.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="#080808"
+                                                  Offset="0" />
+                                <GradientStop Color="#202020"
+                                                   Offset="0.5" />
+                                <GradientStop Color="#080808"
+                                                  Offset="1.0" />
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+
+                    <!--Filtered by category-->
+
+                    <Label Margin="16,0,6,10" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Filter tag : " TextColor="#ff6400" Style="{StaticResource Size_Medium}" FontFamily="AorusFont_Bold" HorizontalOptions="Start"></Label>
+                    <FlexLayout  Direction="Row" Padding="12,0" Wrap="Wrap" JustifyContent="Start" BindableLayout.ItemsSource="{Binding FilteredTagList}" >
+
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Padding="4">
+                                    <Frame HorizontalOptions="Center" VerticalOptions="Center" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" BorderColor="#FF6400" CornerRadius="16" Padding="10,6" BackgroundColor="#363636"  >
+                                        <StackLayout Orientation="Horizontal" Spacing="6">
+                                            <Label HorizontalOptions="FillAndExpand" VerticalOptions="Center" Text="{Binding .}" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Small}"></Label>
+                                            <Frame xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="3" Padding="5" BackgroundColor="#080808" CornerRadius="120" IsClippedToBounds="True" HorizontalOptions="End">
+                                                <Image Source="CloseIconWhite" WidthRequest="10" HeightRequest="10"  Aspect="AspectFill"></Image>
+                                                <Frame.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="RemoveCategoryTag_Clicked" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                                                </Frame.GestureRecognizers>
+                                            </Frame>
+                                        </StackLayout>
+                                    </Frame>
+
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+
+                        <BindableLayout.EmptyView>
+
+                            <Frame HorizontalOptions="Center" VerticalOptions="Center" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" BorderColor="#FF6400" CornerRadius="16" Padding="10,6" BackgroundColor="#363636"  >
+                                <StackLayout Orientation="Horizontal" Spacing="6">
+                                    <Label HorizontalOptions="FillAndExpand" VerticalOptions="Center" Text="Select a tag" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Style="{StaticResource Size_Small}"></Label>
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Nav_CategoryPopup"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+                        </BindableLayout.EmptyView>
+                    </FlexLayout>
+
+                    <!--Result-->
+                    <Label Margin="16,10" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Result : " TextColor="#ff6400" Style="{StaticResource Size_Medium}" FontFamily="AorusFont_Bold" HorizontalOptions="FillAndExpand"></Label>
+
+                    <Grid  BackgroundColor="#66080808" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <StackLayout VerticalOptions="FillAndExpand" IsVisible="{Binding IsSearching,Converter={StaticResource TrueFalseConverter}}" BindableLayout.ItemsSource="{Binding ResultList}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Frame Padding="0,6" BackgroundColor="Transparent">
+                                            <StackLayout Padding="16,0" Margin="0,0,0,6" Orientation="Horizontal" >
+                                                <!--Image-->
+                                                <Frame IsClippedToBounds="True" CornerRadius="16" Padding="2" HeightRequest="90" WidthRequest="90" MinimumWidthRequest="90" HorizontalOptions="Start"   VerticalOptions="Start"
+                           xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="4" BackgroundColor="#202020" >
+                                                    <ffimageloading:CachedImage Source="{Binding Poster}"  Aspect="AspectFill"    xct:CornerRadiusEffect.CornerRadius="16" />
+                                                </Frame>
+                                                <!--Info-->
+                                                <StackLayout Spacing="0" Margin="6,0,0,0" HorizontalOptions="StartAndExpand" >
+                                                    <Label xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" Text="{Binding MovieDetails.Title}" Style="{StaticResource Size_Medium}" TextColor="White" MaxLines="2" LineBreakMode="TailTruncation"></Label>
+                                                    <Label xct:ShadowEffect.Color="#b3b3b3"  xct:ShadowEffect.Radius="2" Text="{Binding DirectorNameList}" Style="{StaticResource Size_Subtitle}"  TextColor="#b3b3b3" MaxLines="2" LineBreakMode="TailTruncation"></Label>
+                                                    <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" Spacing="3">
+                                                        <Label  xct:ShadowEffect.Color="White"  xct:ShadowEffect.Radius="3" 
+                                                       VerticalTextAlignment="Center" Text="{Binding StarRate}" Style="{StaticResource Size_Caption}"></Label>
+                                                        <local:StarView FillColors="#FF6400" Rating="{Binding FirstStar}"  Style="{StaticResource FirstStarMargin}"/>
+                                                        <local:StarView  FillColors="#FF6400"  Rating="{Binding SecondStar}" Style="{StaticResource AfterStarMargin}"/>
+                                                        <local:StarView  FillColors="#FF6400"  Rating="{Binding ThirdStar}" Style="{StaticResource AfterStarMargin}"/>
+                                                        <local:StarView  FillColors="#FF6400"  Rating="{Binding FourthStar}" Style="{StaticResource AfterStarMargin}"/>
+                                                        <local:StarView  FillColors="#FF6400"  Rating="{Binding FifthStar}" Style="{StaticResource AfterStarMargin}"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                                <!--Booking Ticket-->
+                                                <StackLayout Spacing="0" Margin="6,0,0,0" WidthRequest="35" HorizontalOptions="End" >
+                                                    <Image Source="BookTicket" Aspect="AspectFill" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Image>
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="Nav_MovieBooking" CommandParameter="{Binding MovieId}"></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
+                                                </StackLayout>
+
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="Nav_MovieDetails" CommandParameter="{Binding MovieId}"></TapGestureRecognizer>
+                                                </StackLayout.GestureRecognizers>
+
+                                            </StackLayout>
+                                        </Frame>
+                                        <BoxView Margin="32,0" HeightRequest="3" BackgroundColor="LightGray" Opacity="0.5"></BoxView>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                            <BindableLayout.EmptyView>
+                                <StackLayout>
+                                    <Label Margin="16,10" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="No Result for your searching." TextColor="#ff6400" Style="{StaticResource Size_Medium}" FontFamily="AorusFont_Bold" HorizontalOptions="CenterAndExpand"></Label>
+                                </StackLayout>
+                            </BindableLayout.EmptyView>
+                        </StackLayout>
+                        <Frame IsVisible="{Binding IsSearching}" Padding="16" Margin="0,-120,0,0"  HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#080808" CornerRadius="16"
+                           xct:ShadowEffect.Color="White" >
+
+                            <StackLayout >
+
+                                <ActivityIndicator IsRunning="True" Color="#ff6400" BackgroundColor="Transparent"></ActivityIndicator>
+
+                                <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="finding movies..." Style="{StaticResource Size_Subtitle}"></Label>
+
+
+                            </StackLayout>
+
+
+                        </Frame>
+
+                    </Grid>
+
+                </StackLayout>
+            </ScrollView>
+
+            <!-- Header -->
+            <Frame VerticalOptions="Start" HeightRequest="65" Padding="0"  BackgroundColor="Transparent">
+                <Grid Padding="16,8" BackgroundColor="#90080808" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="60" >
+                    <Frame Padding="8" BackgroundColor="#B3080808" CornerRadius="16" VerticalOptions="CenterAndExpand"  HorizontalOptions="StartAndExpand"  >
+                        <Image Source="BackIconWhite" Aspect="AspectFit" WidthRequest="35"></Image>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Nav_ClosePage"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Label Margin="16,10" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="2" Text="Seach " TextColor="#FFFFFF" Style="{StaticResource Size_Title}" FontFamily="AorusFont_Bold" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Label>
+
+                    <Frame Padding="8" BackgroundColor="#B3080808" CornerRadius="16" VerticalOptions="CenterAndExpand" HorizontalOptions="End"   >
+                        <Image Source="FilterIcon" Aspect="AspectFit" WidthRequest="35"></Image>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Nav_CategoryPopup"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </Grid>
+            </Frame>
+
+
+
+        </Grid >
+    </ContentPage.Content>
+</ContentPage>

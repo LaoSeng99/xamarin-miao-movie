@@ -1,0 +1,86 @@
+﻿<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:local="clr-namespace:BXM308_Assignment.CustomView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="BXM308_Assignment.Layout.Density3">
+    <!--Fontsize-->
+
+    <!--Biggest-->
+    <!--For Main Title/ Trending, Category-->
+    <Style TargetType="Label" x:Key="Size_Header">
+        <Setter Property="FontSize" Value="33"></Setter>
+    </Style>
+    <!--Mainly Use, Actor name, movie name, description-->
+    <Style TargetType="Label" x:Key="Size_Large">
+        <Setter Property="FontSize" Value="19"></Setter>
+    </Style>
+    <Style TargetType="Label" x:Key="Size_Medium">
+        <Setter Property="FontSize" Value="15.5"></Setter>
+    </Style>
+    <Style TargetType="Label" x:Key="Size_Small">
+        <Setter Property="FontSize" Value="11.5"></Setter>
+    </Style>
+
+    <Style TargetType="Label" x:Key="Size_Title">
+        <Setter Property="FontSize" Value="21"></Setter>
+    </Style>
+    <Style TargetType="Label" x:Key="Size_Subtitle">
+        <Setter Property="FontSize" Value="13"></Setter>
+    </Style>
+    <!--Small-->
+    <Style TargetType="Label" x:Key="Size_Caption">
+        <Setter Property="FontSize" Value="10"></Setter>
+    </Style>
+    <Style TargetType="Label" x:Key="Size_Micro">
+        <Setter Property="FontSize" Value="8"></Setter>
+    </Style>
+    <!--Tabview-->
+    <Style TargetType="xct:TabViewItem" x:Key="TabviewItemDisplay">
+        <Setter Property="FontFamilySelected" Value="AorusFont_Bold"></Setter>
+        <Setter Property="FontFamily" Value="AorusFont_Regular"></Setter>
+        <Setter Property="FontSize" Value="15.5"></Setter>
+        <Setter Property="FontSizeSelected" Value="14.5"></Setter>
+        <Setter Property="TextColor" Value="#FFFFFF"></Setter>
+        <Setter Property="TextColorSelected" Value="#FF6400"></Setter>
+        <Setter Property="BadgeBackgroundColor" Value="#363636"></Setter>
+        <Setter Property="BadgeBackgroundColorSelected" Value="#FF6400"></Setter>
+        <Setter Property="BadgeTextColor" Value="#FFFFFF"></Setter>
+        <Setter Property="BadgeBorderColor" Value="#FF6400"></Setter>
+        <Setter Property="BadgeBorderColorSelected" Value="#FFFFFF"></Setter>
+    </Style>
+    <!--Star-->
+    <Style TargetType="local:StarView" x:Key="FirstStarMargin">
+        <Setter Property="Margin" Value="-1,0,-2.5,0"></Setter>
+        <Setter Property="HeightRequest" Value="10"></Setter>
+        <Setter Property="WidthRequest" Value="18"></Setter>
+        <Setter Property="StrokeColor" Value="#FF6400"></Setter>
+        <Setter Property="EmptyColor" Value="#FFFFFF"></Setter>
+
+    </Style>
+    <Style TargetType="local:StarView" x:Key="AfterStarMargin">
+        <Setter Property="Margin" Value="-3,0"></Setter>
+        <Setter Property="HeightRequest" Value="10"></Setter>
+        <Setter Property="WidthRequest" Value="18"></Setter>
+        <Setter Property="StrokeColor" Value="#FF6400"></Setter>
+        <Setter Property="EmptyColor" Value="#FFFFFF"></Setter>
+
+    </Style>
+    <!--Global-->
+    <Style TargetType="Label">
+        <Setter Property="FontFamily" Value="AorusTitle_Regular" />
+        <Setter Property="TextColor" Value="#FFFFFF" />
+    </Style>
+    <Style TargetType="Button">
+        <Setter Property="FontFamily" Value="AorusTitle_Regular" />
+        <Setter Property="TextColor" Value="#FFFFFF" />
+    </Style>
+    <Style TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="#262626" />
+    </Style>
+    <Style TargetType="ffimageloading:CachedImage">
+        <Setter Property="DownsampleToViewSize" Value="True"></Setter>
+        <Setter Property="FadeAnimationEnabled" Value="True"></Setter>
+    </Style>
+    <x:Double x:Key="TicketHeightRequest">115</x:Double>
+</ResourceDictionary>

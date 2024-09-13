@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns:pages="http://rotorgames.com"
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                 xmlns:cv="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+                 x:Class="BXM308_Assignment.Popup.PhotoViewPopup"
+                 NavigationPage.HasNavigationBar="False" BackgroundColor="#80080808">
+    <pages:PopupPage.Animation>
+        <!--           EasingIn="SpringOut"
+                       EasingOut="SpringIn"  会滑过头 -->
+        <pages:ScaleAnimation DurationIn="300" 
+                              DurationOut="300"
+                              ScaleIn="1.2"
+                              ScaleOut="0.8"
+                              EasingIn="SinIn"
+                              EasingOut="SinOut"
+                              PositionIn="Center"
+                              PositionOut="Center"  >
+        </pages:ScaleAnimation>
+    </pages:PopupPage.Animation>
+    <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HeightRequest="300" >
+        <cv:CarouselViewControl VerticalOptions="FillAndExpand" 
+                                ShowArrows="True" x:Name="ImageList"
+                                ArrowsBackgroundColor="Transparent"
+                                ArrowsSize="30" ArrowsParentMargin="6" InfiniteScrolling="True"
+                                ArrowsTransparency="0.9" ArrowsTintColor="White"
+                                BackgroundColor="#060606" >
+            <cv:CarouselViewControl.ItemTemplate>
+                <DataTemplate>
+                    <ffimageloading:CachedImage DownsampleToViewSize="True" FadeAnimationEnabled="True"
+                        Source="{Binding Image}" Aspect="AspectFit"  HorizontalOptions="FillAndExpand"></ffimageloading:CachedImage>
+                </DataTemplate>
+            </cv:CarouselViewControl.ItemTemplate>
+        </cv:CarouselViewControl>
+    </StackLayout>
+
+</pages:PopupPage>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns:pages="http://rotorgames.com"
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+                 x:Class="BXM308_Assignment.Popup.ApplyingPopup"
+                 NavigationPage.HasNavigationBar="False" BackgroundColor="#99080808">
+    <pages:PopupPage.Animation>
+        <!--           EasingIn="SpringOut"
+                       EasingOut="SpringIn"  会滑过头 -->
+        <pages:ScaleAnimation DurationIn="100" 
+                              DurationOut="100"
+                             PositionIn="Center"
+                             PositionOut="Center">
+
+        </pages:ScaleAnimation>
+    </pages:PopupPage.Animation>
+    <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent" Padding="16" >
+
+        <Frame  Padding="16"   HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#080808" CornerRadius="16"
+                           xct:ShadowEffect.Color="White" >
+            <StackLayout  HorizontalOptions="Center" VerticalOptions="Center">
+                <ActivityIndicator IsRunning="True" Color="#ff6400" BackgroundColor="Transparent"></ActivityIndicator>
+
+                <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Applying..." Style="{StaticResource Size_Subtitle}"></Label>
+            </StackLayout>
+
+
+        </Frame>
+    </StackLayout>
+
+</pages:PopupPage>

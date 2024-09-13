@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:sho="http://sharpnado.com"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="BXM308_Assignment.RegisterPage" BackgroundColor="#080808">
+    <ContentPage.Content>
+        <Grid x:Name="PageContent" Opacity="0"  >
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF6400" Offset="0"/>
+                    <GradientStop Color="#ffb145" Offset="0.3"/>
+                    <GradientStop Color="#FF6400" Offset="0.7"/>
+                    <GradientStop Color="#ffb145" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <StackLayout BackgroundColor="#D1080808" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            </StackLayout>
+
+            <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0 ,0" Padding="0,0,0,16"  HorizontalOptions="FillAndExpand" >
+                <!-- Header -->
+                <Grid HeightRequest="60" Margin="0,30,0,0" >
+                    <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" Text="Register" Style="{StaticResource Size_Title}"></Label>
+
+                    <Frame Padding="6" BackgroundColor="#B3404040"  TranslationY="-3" CornerRadius="16" VerticalOptions="Start" HorizontalOptions="Start" Margin="16,0,0,0"   >
+                        <Image Source="BackIconWhite" Aspect="AspectFit" WidthRequest="35"></Image>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Nav_ClosePage"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </Grid>
+
+                <StackLayout>
+                    <!--Step 1 Entry Email-->
+                    <StackLayout x:Name="Step1Container" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="16,0">
+                        <StackLayout Spacing="0" Orientation="Horizontal" Margin="0,0,0,20">
+                            <Image Source="MiaoMovieLogo" Aspect="AspectFit" WidthRequest="60" ></Image>
+                            <Image Source="MiaoMovieFont" Aspect="AspectFit" WidthRequest="60" ></Image>
+                        </StackLayout>
+
+                        <StackLayout Spacing="0" VerticalOptions="StartAndExpand" Margin="0,0,0,16">
+                            <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Create Account" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Title}" Opacity=".8"></Label>
+                            <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Join the MiaoMovie member &amp;" Style="{StaticResource Size_Subtitle}" Opacity=".7"></Label>
+                            <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Booking Movie today!" Style="{StaticResource Size_Subtitle}"  Opacity=".7"></Label>
+                        </StackLayout>
+
+                        <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Email :" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Large}" Opacity=".9"></Label>
+                        <Frame CornerRadius="16" Padding="16,-6,16,0" BorderColor="#FF6400" BackgroundColor="Transparent" Margin="6,0,6,12" >
+                            <Entry  x:Name="Register_Email" Style="{StaticResource Size_Medium}" TranslationY="7" TextColor="White" PlaceholderColor="#4DFFFFFF" Placeholder="MiaoMovie@gmail.com" FontFamily="AorusFont_Regular"></Entry>
+                        </Frame>
+                        <ActivityIndicator HeightRequest="30" HorizontalOptions="End"  Color="#FF6400" IsRunning="True" IsVisible="{Binding IsEmailChecking}"></ActivityIndicator>
+                        <Label xct:ShadowEffect.Color="#f73023" xct:ShadowEffect.Radius="3" x:Name="ErrorEmailMessage" IsVisible="{Binding IsEmailError}" Style="{StaticResource Size_Small}" Margin="16,-10,0,0" Text="" TextColor="#f73023"></Label>
+
+                        <StackLayout VerticalOptions="EndAndExpand" Margin="0,16">
+                            <Frame xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" BackgroundColor="#ff6400" CornerRadius="50" HorizontalOptions="FillAndExpand" Padding="48,16" Margin="0,32,0,16">
+
+                                <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Continue" HorizontalOptions="Center" Style="{StaticResource Size_Medium}"></Label>
+
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Register_CheckEmail" CommandParameter="Email"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+                            <StackLayout Orientation="Horizontal" Margin="0,16,0,0">
+                                <BoxView Margin="32,0,12,0" HeightRequest="1" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></BoxView>
+                                <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Or"  Style="{StaticResource Size_Subtitle}" HorizontalOptions="Center"></Label>
+                                <BoxView  Margin="12,0,32,0"  HeightRequest="1" BackgroundColor="LightGray" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></BoxView>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                        <StackLayout VerticalOptions="End">
+                            <Frame xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" BackgroundColor="#d9ffffff" CornerRadius="50" HorizontalOptions="FillAndExpand" Padding="48,12" Margin="16,16,16,32">
+                                <Label xct:ShadowEffect.Color="Black" xct:ShadowEffect.Radius="3" Text="Continue With MiaoData" HorizontalOptions="Center" Style="{StaticResource Size_Subtitle}" TextColor="Black"></Label>
+                                <Frame.GestureRecognizers>
+                                    <!--<TapGestureRecognizer Tapped="Nav_LoginPage" CommandParameter="Register"></TapGestureRecognizer>-->
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+                            <Frame xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" BackgroundColor="#d9ffffff" CornerRadius="50" HorizontalOptions="FillAndExpand" Padding="48,12" Margin="16,0,16,16">
+                                <Label xct:ShadowEffect.Color="Black" xct:ShadowEffect.Radius="3" Text="Continue With Google" HorizontalOptions="Center" Style="{StaticResource Size_Subtitle}" TextColor="Black"></Label>
+                                <Frame.GestureRecognizers>
+                                    <!--<TapGestureRecognizer Tapped="Nav_LoginPage" CommandParameter="Register"></TapGestureRecognizer>-->
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+
+                        </StackLayout>
+                    </StackLayout>
+                    <!--Step 2 Entry Phone-->
+                    <StackLayout IsVisible="false" x:Name="Step2Container" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="16,0">
+                        <Label xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="3" Text="Profile" Style="{StaticResource Size_Header}"></Label>
+                        <!--Username-->
+                        <StackLayout Spacing="3">
+                            <Label xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="3" Text="Username :" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Large}" Opacity=".9"></Label>
+                            <Frame CornerRadius="16" Padding="16,-6,16,0" BorderColor="#FF6400" BackgroundColor="Transparent" Margin="6,0,6,12" >
+                                <Entry x:Name="Register_Username" Style="{StaticResource Size_Medium}"  TranslationY="7" TextColor="White" PlaceholderColor="#4DFFFFFF" Placeholder="Lao Seng" FontFamily="AorusFont_Regular" ClearButtonVisibility="WhileEditing"></Entry>
+                            </Frame>
+                            <Label xct:ShadowEffect.Color="#f73023" xct:ShadowEffect.Radius="3" IsVisible="false" x:Name="Error_Username"  Style="{StaticResource Size_Small}" Margin="16,-10,0,0" Text="* The Username cannot empty" TextColor="#f73023"></Label>
+
+                        </StackLayout>
+                        <!--Password-->
+                        <StackLayout Spacing="3">
+                            <Label xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="3" Text="Password :" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Large}" Opacity=".9"></Label>
+                            <Frame CornerRadius="16" Padding="16,-6,16,0" BorderColor="#FF6400" BackgroundColor="Transparent" Margin="6,0,6,12" >
+                                <Entry x:Name="Register_Password"  Style="{StaticResource Size_Medium}" TranslationY="7" TextColor="White" PlaceholderColor="#4DFFFFFF" Placeholder="Enter Password" FontFamily="AorusFont_Regular" IsPassword="True" ClearButtonVisibility="WhileEditing"></Entry>
+                            </Frame>
+                            <Label xct:ShadowEffect.Color="#f73023" xct:ShadowEffect.Radius="3" IsVisible="false" x:Name="Error_Password"  Style="{StaticResource Size_Small}" Margin="16,-10,0,0" Text="* The password cannot empty" TextColor="#f73023"></Label>
+
+                        </StackLayout>
+                        <!--Confirm Password-->
+                        <StackLayout Spacing="3">
+                            <Label xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="3" Text="Confirm Password :" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Large}" Opacity=".9"></Label>
+                            <Frame CornerRadius="16" Padding="16,-6,16,0" BorderColor="#FF6400" BackgroundColor="Transparent" Margin="6,0,6,12" >
+                                <Entry x:Name="Register_Re_EnterPassword" Style="{StaticResource Size_Medium}" TranslationY="7" TextColor="White" PlaceholderColor="#4DFFFFFF" Placeholder="Re-Enter Password" FontFamily="AorusFont_Regular" IsPassword="True" ClearButtonVisibility="WhileEditing"></Entry>
+                            </Frame>
+                            <Label  xct:ShadowEffect.Color="#f73023" xct:ShadowEffect.Radius="3" IsVisible="false" x:Name="Error_Re_EnterPassword"  Style="{StaticResource Size_Small}" Margin="16,-10,0,0" Text="* The password cannot empty" TextColor="#f73023"></Label>
+                        </StackLayout>
+                        <!--Phone Number-->
+                        <StackLayout Spacing="3">
+                            <Label xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="3" Text="Phone Number :" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Large}" Opacity=".9"></Label>
+                            <Frame CornerRadius="16" Padding="16,-6,16,0" BorderColor="#FF6400" BackgroundColor="Transparent" Margin="6,0,6,12" >
+                                <Entry x:Name="Register_Phone" Style="{StaticResource Size_Medium}"  TranslationY="7" TextColor="White" PlaceholderColor="#4DFFFFFF" Placeholder="+60 123156156" FontFamily="AorusFont_Regular" ClearButtonVisibility="WhileEditing"></Entry>
+                            </Frame>
+                            <Label xct:ShadowEffect.Color="#f73023" xct:ShadowEffect.Radius="3"  IsVisible="false" x:Name="Error_Phone" Style="{StaticResource Size_Small}" Margin="16,-10,0,0" Text="* The password cannot empty" TextColor="#f73023"></Label>
+                        </StackLayout>
+
+
+                        <Frame VerticalOptions="EndAndExpand" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" BackgroundColor="#ff6400" CornerRadius="50" HorizontalOptions="FillAndExpand" Padding="48,16" Margin="0,32,0,16">
+                            <Label  xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Continue" HorizontalOptions="Center" Style="{StaticResource Size_Medium}"></Label>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RegisterStep2_Continue" CommandParameter="Email"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+
+
+                        <StackLayout Spacing="0" VerticalOptions="EndAndExpand">
+                            <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Text="At MiaoMovie" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Title}" Opacity=".8"></Label>
+                            <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Text="You can book ticket for movie &amp;" Style="{StaticResource Size_Subtitle}" Opacity=".7"></Label>
+                            <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Text="share your mind to other people" Style="{StaticResource Size_Subtitle}"  Opacity=".7"></Label>
+                        </StackLayout>
+                    </StackLayout>
+
+                </StackLayout>
+
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

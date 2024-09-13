@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns:pages="http://rotorgames.com"
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="BXM308_Assignment.Popup.BookingCloseTransitionPopup"
+                 NavigationPage.HasNavigationBar="False" BackgroundColor="Transparent">
+    <pages:PopupPage.Animation>
+        <!--           EasingIn="SpringOut"
+                       EasingOut="SpringIn"  会滑过头 -->
+        <pages:MoveAnimation DurationIn="0" 
+                              DurationOut="200"
+                             PositionIn="Center"
+                             PositionOut="Right">
+
+        </pages:MoveAnimation>
+    </pages:PopupPage.Animation>
+    <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#080808" >
+
+    </StackLayout>
+
+</pages:PopupPage>

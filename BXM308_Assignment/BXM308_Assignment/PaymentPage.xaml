@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:sho="http://sharpnado.com"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="BXM308_Assignment.PaymentPage" BackgroundColor="#080808">
+    <ContentPage.Content>
+        <Grid x:Name="PageContent" Opacity="0" BackgroundColor="Transparent">
+
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF6400" Offset="0"/>
+                    <GradientStop Color="#ffb145" Offset="0.3"/>
+                    <GradientStop Color="#FF6400" Offset="0.7"/>
+                    <GradientStop Color="#ffb145" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <StackLayout BackgroundColor="#A6080808" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            </StackLayout>
+
+            <ffimageloading:CachedImage Source="PaymentImage.png" Aspect="AspectFit" VerticalOptions="FillAndExpand"></ffimageloading:CachedImage>
+
+            <!--Header-->
+            <sho:MaterialFrame  VerticalOptions="Start" Padding="0" AndroidBlurRadius="20" MaterialBlurStyle="Dark" BackgroundColor="Transparent" MaterialTheme="AcrylicBlur" >
+                <Grid  BackgroundColor="#A6080808"  VerticalOptions="Start" HeightRequest="60" Padding="0,16,0,0" >
+                    <Label xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" Text="Payment Gateway" Style="{StaticResource Size_Title}"></Label>
+
+                    <Frame Padding="6" BackgroundColor="#B3404040"  TranslationY="-3" CornerRadius="16" VerticalOptions="Start" HorizontalOptions="Start" Margin="16,0,0,0"   >
+                        <Image Source="BackIconWhite" Aspect="AspectFit" WidthRequest="35"></Image>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Nav_ClosePage"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </Grid>
+            </sho:MaterialFrame>
+
+            <Frame  VerticalOptions="End" Margin="70,0,70,16" Padding="12" CornerRadius="32" BackgroundColor="#080808" xct:ShadowEffect.Color="#000000" xct:ShadowEffect.Radius="6">
+                <Label xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Complete" Style="{StaticResource Size_Medium}"></Label>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Complete_Clicked"></TapGestureRecognizer>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

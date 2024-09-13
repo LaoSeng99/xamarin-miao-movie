@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:sho="http://sharpnado.com"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="BXM308_Assignment.LoginPage" BackgroundColor="#080808">
+    <ContentPage.Content>
+
+        <Grid x:Name="PageContent" Opacity="0"  >
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF6400" Offset="0"/>
+                    <GradientStop Color="#ffb145" Offset="0.3"/>
+                    <GradientStop Color="#FF6400" Offset="0.7"/>
+                    <GradientStop Color="#ffb145" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <!--For Fake Shadow-->
+            <StackLayout BackgroundColor="#D1080808" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            </StackLayout>
+
+            <StackLayout VerticalOptions="FillAndExpand" Margin="0,0,0 ,0" Padding="0,0,0,16"  HorizontalOptions="FillAndExpand" >
+
+                <!--Header-->
+                <Grid HeightRequest="60" Margin="0,30,0,0" >
+                    <Label xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3"  HorizontalTextAlignment="Center" VerticalTextAlignment="Start" Text="Sign In" Style="{StaticResource Size_Title}"></Label>
+
+                    <Frame Padding="6" BackgroundColor="#B3404040"  TranslationY="-3" CornerRadius="16" VerticalOptions="Start" HorizontalOptions="Start" Margin="16,0,0,0"   >
+                        <Image Source="BackIconWhite" Aspect="AspectFit" WidthRequest="35"></Image>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Nav_ClosePage" ></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </Grid>
+                <StackLayout Padding="16,32">
+                    <!--Logo Image-->
+                    <StackLayout HorizontalOptions="Center"  Orientation="Horizontal" Spacing="0" Margin="0,0,0,16" >
+                        <ffimageloading:CachedImage Source="MiaoMovieLogo" HorizontalOptions="Center" VerticalOptions="FillAndExpand" Aspect="AspectFit" WidthRequest="80"></ffimageloading:CachedImage>
+                        <ffimageloading:CachedImage Source="MiaoMovieFont"  HorizontalOptions="Center" VerticalOptions="FillAndExpand"  Aspect="AspectFit" WidthRequest="140"></ffimageloading:CachedImage>
+                    </StackLayout>
+                    <!--Email-->
+                    <StackLayout Spacing="3">
+                        <Label xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="3" Text="Email :" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Large}" Opacity=".9"></Label>
+                        <Frame CornerRadius="16" Padding="16,-6,16,0" BorderColor="#FF6400" BackgroundColor="Transparent" Margin="6,0,6,12" >
+                            <Entry x:Name="Login_Email" Style="{StaticResource Size_Medium}"  TranslationY="7" TextColor="White" PlaceholderColor="#4DFFFFFF" Placeholder="Enter email" FontFamily="AorusFont_Regular" ClearButtonVisibility="WhileEditing"></Entry>
+                        </Frame>
+                        <Label xct:ShadowEffect.Color="#f73023" xct:ShadowEffect.Radius="3" IsVisible="false" x:Name="Error_Email"  Style="{StaticResource Size_Small}" Margin="16,-10,0,0" Text="* The Username cannot empty" TextColor="#f73023"></Label>
+
+                    </StackLayout>
+                    <!--Password-->
+                    <StackLayout Spacing="3">
+                        <Label xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="3" Text="Password :" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Large}" Opacity=".9"></Label>
+                        <Frame CornerRadius="16" Padding="16,-6,16,0" BorderColor="#FF6400" BackgroundColor="Transparent" Margin="6,0,6,12" >
+                            <Entry x:Name="Login_Password"  Style="{StaticResource Size_Medium}" TranslationY="7" TextColor="White" PlaceholderColor="#4DFFFFFF" Placeholder="Enter Password" FontFamily="AorusFont_Regular" IsPassword="True" ClearButtonVisibility="WhileEditing"></Entry>
+                        </Frame>
+                        <Label xct:ShadowEffect.Color="#f73023" xct:ShadowEffect.Radius="3" IsVisible="false" x:Name="Error_Password"  Style="{StaticResource Size_Small}" Margin="16,-10,0,0" Text="* The password cannot empty" TextColor="#f73023"></Label>
+                    </StackLayout>
+                    <Label HorizontalTextAlignment="End" Text="Forgot password?" TextColor="#ff6400" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="1"></Label>
+
+                    <Frame VerticalOptions="EndAndExpand" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" BackgroundColor="#ff6400" CornerRadius="50" HorizontalOptions="FillAndExpand" Padding="48,16" Margin="0,32,0,16">
+                        <Label  xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="3" Text="Continue" HorizontalOptions="Center" Style="{StaticResource Size_Medium}"></Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Login_Clicked" CommandParameter="Email"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <ActivityIndicator x:Name="LoginChecking" IsVisible="false" IsRunning="True" Color="#FF6400" HorizontalOptions="CenterAndExpand"></ActivityIndicator>
+
+                </StackLayout>
+
+
+
+            </StackLayout>
+
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

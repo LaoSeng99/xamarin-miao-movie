@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns:pages="http://rotorgames.com"
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="BXM308_Assignment.Popup.BookingReviewPopup"
+                 xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+                 xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+                 NavigationPage.HasNavigationBar="False" BackgroundColor="#B3080808">
+    <pages:PopupPage.Animation>
+        <!--           EasingIn="SpringOut"
+                       EasingOut="SpringIn"  会滑过头 -->
+        <pages:MoveAnimation DurationIn="250" 
+                              DurationOut="250"
+                             PositionIn="Bottom"
+                             PositionOut="Bottom">
+
+        </pages:MoveAnimation>
+    </pages:PopupPage.Animation>
+    <Grid>
+        <pancake:PancakeView xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="16" xct:ShadowEffect.OffsetY="-12" CornerRadius="36,36,0,0" VerticalOptions="EndAndExpand"  BackgroundColor="Transparent">
+            <Grid VerticalOptions="End">
+                <Frame Padding="0" BackgroundColor="Transparent" VerticalOptions="EndAndExpand" HeightRequest="500">
+                    <ffimageloading:CachedImage Source="{Binding Ticket.MoviePoster}"  Aspect="AspectFill" ></ffimageloading:CachedImage>
+                </Frame>
+
+                <StackLayout Margin="0,120,0,0"  Padding="16,40,16,0" VerticalOptions="EndAndExpand" Spacing="16">
+                    <StackLayout.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="Transparent" Offset="0"></GradientStop>
+                            <GradientStop Color="#080808" Offset="0.1"></GradientStop>
+                        </LinearGradientBrush>
+                    </StackLayout.Background>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <!--Movie Title-->
+                        <Grid ColumnDefinitions="auto,*" Grid.ColumnSpan="2" >
+                            <Label Grid.Column="0" xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="2"
+                                   Text="Movie : " FontFamily="AorusFont_Regular" Style="{StaticResource Size_Small}" VerticalTextAlignment="Center"></Label>
+                            <Label Grid.Column="1" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="3" LineHeight="0.7" LineBreakMode="TailTruncation" MaxLines="2"
+                                   Text="{Binding  Ticket.MovieTitle}" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Medium}" VerticalTextAlignment="Center" ></Label>
+                        </Grid>
+                        <!--Date-->
+                        <Grid Grid.Row="1" ColumnDefinitions="auto,*" >
+                            <Label Grid.Column="0" xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="2"
+                                   Text="Date : " FontFamily="AorusFont_Regular" Style="{StaticResource Size_Small}" VerticalTextAlignment="Center"></Label>
+                            <Label Grid.Column="1" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="3" LineHeight="0.7" LineBreakMode="TailTruncation" MaxLines="2"
+                                   Text="{Binding  Ticket.Date}" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Medium}"  VerticalTextAlignment="Center"></Label>
+                        </Grid>
+                        <!--Time-->
+                        <Grid Grid.Row="1" Grid.Column="1" ColumnDefinitions="auto,*" >
+                            <Label Grid.Column="0" xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="2"
+                                   Text="Time : " FontFamily="AorusFont_Regular" Style="{StaticResource Size_Small}" VerticalTextAlignment="Center"></Label>
+                            <Label Grid.Column="1" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="3" LineHeight="0.7" LineBreakMode="TailTruncation" MaxLines="2"
+                                   Text="{Binding  Ticket.Time}" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Medium}" VerticalTextAlignment="Center" ></Label>
+                        </Grid>
+                        <!--Seat-->
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ColumnDefinitions="auto,*" >
+                            <Label Grid.Column="0" xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="2"
+                                   Text="Total Seat : " FontFamily="AorusFont_Regular" Style="{StaticResource Size_Small}" VerticalTextAlignment="Center"></Label>
+                            <Label Grid.Column="1" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="3" LineHeight="0.7" LineBreakMode="TailTruncation" MaxLines="2"
+                                   Text="{Binding  Ticket.ReservaSeatNumber}" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Medium}" VerticalTextAlignment="Center" ></Label>
+                        </Grid>
+
+                        <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ColumnDefinitions="auto,*" >
+                            <Label Grid.Column="0" xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="2"
+                                   Text="Seat Code : " FontFamily="AorusFont_Regular" Style="{StaticResource Size_Small}" VerticalTextAlignment="Center"></Label>
+                            <Label Grid.Column="1" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="3" LineHeight="0.7" LineBreakMode="TailTruncation" MaxLines="2"
+                                   Text="{Binding  Ticket.ReservationCode}" FontFamily="AorusFont_Bold" Style="{StaticResource Size_Medium}" VerticalTextAlignment="Center" ></Label>
+                        </Grid>
+
+                        <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" ColumnDefinitions="auto,*" >
+                            <Label Grid.Column="0" xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="2"
+                                   Text="Total Amount : " FontFamily="AorusFont_Bold" Style="{StaticResource Size_Medium}" VerticalTextAlignment="Center"></Label>
+                            <Label Grid.Column="1" xct:ShadowEffect.Color="#FF6400" TextColor="#ff6400" xct:ShadowEffect.Radius="3" LineHeight="0.7" LineBreakMode="TailTruncation" MaxLines="2"
+                                   Text="{Binding Ticket.AmountDisplay}" Style="{StaticResource Size_Large}" VerticalTextAlignment="Center" ></Label>
+                        </Grid>
+                    </Grid>
+
+
+
+                    <Frame  VerticalOptions="EndAndExpand" Margin="32,6" Padding="16,10" CornerRadius="32" BackgroundColor="#ff6400" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="6">
+                        <Label  xct:ShadowEffect.Color="#000000" xct:ShadowEffect.Radius="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Continue" Style="{StaticResource Size_Medium}"></Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Continue_Clicked"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                    <Frame  VerticalOptions="End" Margin="70,0,70,16" Padding="12,6" CornerRadius="32" BackgroundColor="#999c9386" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="6">
+                        <Label xct:ShadowEffect.Color="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Cancel" Style="{StaticResource Size_Medium}"></Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Cancel_Clicked"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </StackLayout>
+
+
+            </Grid>
+            <pancake:PancakeView.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Block_Panel"></TapGestureRecognizer>
+            </pancake:PancakeView.GestureRecognizers>
+        </pancake:PancakeView>
+        <Grid x:Name="LoadContainer" Opacity="0" IsVisible="false " HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  BackgroundColor="#B3080808">
+            <Frame Margin="32,0" x:Name="LoadingAnimation" Opacity="0" TranslationY="50"   HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#080808" CornerRadius="16"
+                           xct:ShadowEffect.Color="White" >
+
+                <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="AUTO"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="AUTO"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <ActivityIndicator Grid.Row="0" IsRunning="{Binding IsLoading}" IsVisible="{Binding IsLoading}" Color="#ff6400" BackgroundColor="Transparent"></ActivityIndicator>
+                    <Image Grid.Row="0" Source="{Binding ImageLink}" IsVisible="{Binding IsImageShow}" Aspect="AspectFit" WidthRequest="50"></Image>
+
+                    <Label Grid.Row="1" xct:ShadowEffect.Color="#FFFFFF" xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Subtitle}" Text="{Binding StatusText}" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" HorizontalOptions="Center"></Label>
+
+
+                    <Frame IsVisible="{Binding IsImageShow}"  Grid.Row="2" VerticalOptions="EndAndExpand" Margin="32,6" Padding="16,10" CornerRadius="32" BackgroundColor="{Binding PaymentStatusColor}" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="6">
+                        <Label  xct:ShadowEffect.Color="#000000" xct:ShadowEffect.Radius="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding PaymentStatusText}" Style="{StaticResource Size_Medium}"></Label>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Close_Review_Clicked"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+
+                </Grid>
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Block_Panel"></TapGestureRecognizer>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Close_Review_Clicked"></TapGestureRecognizer>
+            </Grid.GestureRecognizers>
+
+        </Grid>
+
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="Cancel_Clicked"></TapGestureRecognizer>
+        </Grid.GestureRecognizers>
+    </Grid>
+
+</pages:PopupPage>

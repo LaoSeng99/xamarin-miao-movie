@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns:pages="http://rotorgames.com"
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+                 xmlns:local="clr-namespace:BXM308_Assignment.CustomView"
+                 x:Class="BXM308_Assignment.Popup.CategoryPopup"
+                 NavigationPage.HasNavigationBar="False" BackgroundColor="#99080808">
+    <pages:PopupPage.Animation>
+        <!--           EasingIn="SpringOut"
+                       EasingOut="SpringIn"  会滑过头 -->
+        <pages:MoveAnimation DurationIn="200" 
+                              DurationOut="200"
+                              PositionIn="Right"
+                              PositionOut="Right"  >
+
+        </pages:MoveAnimation>
+    </pages:PopupPage.Animation>
+    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#080808" Margin="80,0,0,0"  >
+   
+        <!--Content-->
+        <ScrollView Padding="0,60,0,0">
+            <StackLayout Padding="16,6">
+                <!--Genre-->
+                <Label xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Movie Genre :" TextColor="#ff6400" Style="{StaticResource Size_Medium}" FontFamily="AorusFont_Bold" HorizontalOptions="Start"></Label>
+
+                <StackLayout Spacing="3" x:Name="CategoryList">
+                    <!--Bindable Genre List-->
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                                <CheckBox ></CheckBox>
+                                <Label Text="{Binding .}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                 
+               
+                </StackLayout>
+
+
+                <!--Price-->
+                <Label xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Price :" TextColor="#ff6400" Style="{StaticResource Size_Medium}" FontFamily="AorusFont_Bold" HorizontalOptions="Start"></Label>
+
+                <StackLayout Spacing="3">
+                    <!--Bindable Price List-->
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <Label Text="> RM 5" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <Label Text="> RM 10" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <Label Text="> RM 15" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                    </StackLayout>
+                </StackLayout>
+                <!--Star Rate-->
+                <Label xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Ratings :" TextColor="#ff6400" Style="{StaticResource Size_Medium}" FontFamily="AorusFont_Bold" HorizontalOptions="Start"></Label>
+                <StackLayout Spacing="3">
+                    <!--Bindable Price List-->
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Label Text="0~1 star" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                            <local:StarView  Style="{StaticResource FirstStarMargin}"></local:StarView>
+                        </StackLayout>
+
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Label Text="1~2 star" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                            <local:StarView  Style="{StaticResource FirstStarMargin}"></local:StarView>
+                            <local:StarView  Style="{StaticResource AfterStarMargin}"></local:StarView>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Label Text="2~3 star" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                            <local:StarView  Style="{StaticResource FirstStarMargin}"></local:StarView>
+                            <local:StarView  Style="{StaticResource AfterStarMargin}"></local:StarView>
+                            <local:StarView  Style="{StaticResource AfterStarMargin}"></local:StarView>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Label Text="3~4 star" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                            <local:StarView  Style="{StaticResource FirstStarMargin}"></local:StarView>
+                            <local:StarView  Style="{StaticResource AfterStarMargin}"></local:StarView>
+                            <local:StarView  Style="{StaticResource AfterStarMargin}"></local:StarView>
+                            <local:StarView  Style="{StaticResource AfterStarMargin}"></local:StarView>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                            <Label Text="4~5 star" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                            <local:StarView  Style="{StaticResource FirstStarMargin}"></local:StarView>
+                            <local:StarView  Style="{StaticResource AfterStarMargin}"></local:StarView>
+                            <local:StarView  Style="{StaticResource AfterStarMargin}"></local:StarView>
+                            <local:StarView  Style="{StaticResource AfterStarMargin}"></local:StarView>
+                            <local:StarView  Style="{StaticResource AfterStarMargin}"></local:StarView>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+                <!--Rated-->
+                <Label xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="6" Text="Rated :" TextColor="#ff6400" Style="{StaticResource Size_Medium}" FontFamily="AorusFont_Bold" HorizontalOptions="Start"></Label>
+                <StackLayout Spacing="3">
+                    <!--Bindable Price List-->
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <Label Text="G" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <Label Text="PG" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <Label Text="PG-13" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <Label Text="R" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                        <CheckBox ></CheckBox>
+                        <Label Text="NC-17" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource Size_Small}"></Label>
+                    </StackLayout>
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+        <Grid VerticalOptions="Start" BackgroundColor="#121212" xct:ShadowEffect.Color="#ffffff" Padding="6,0">
+            <Frame  BorderColor="#FFFFFF" VerticalOptions="Center" HorizontalOptions="Start"  Padding="12,3" CornerRadius="32" BackgroundColor="#99262626" xct:ShadowEffect.Color="White" xct:ShadowEffect.Radius="6">
+                <Label xct:ShadowEffect.Color="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Cancel" Style="{StaticResource Size_Medium}"></Label>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Nav_ClosePoup"></TapGestureRecognizer>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Label Margin="16,10" TranslationX="12" xct:ShadowEffect.Color="#ff6400"  xct:ShadowEffect.Radius="2" Text="Categories " TextColor="#FFFFFF" Style="{StaticResource Size_Title}" FontFamily="AorusFont_Bold" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Label>
+        </Grid>
+        <Frame BorderColor="#ffffff" VerticalOptions="End" HorizontalOptions="End" Margin="0,0,16,16" Padding="12,6" CornerRadius="32" BackgroundColor="#FF6400" xct:ShadowEffect.Color="#FF6400" xct:ShadowEffect.Radius="6">
+            <Label xct:ShadowEffect.Color="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Apply Tag" Style="{StaticResource Size_Medium}"></Label>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="Apply_Clicked"></TapGestureRecognizer>
+            </Frame.GestureRecognizers>
+        </Frame>
+
+    </Grid>
+
+</pages:PopupPage>

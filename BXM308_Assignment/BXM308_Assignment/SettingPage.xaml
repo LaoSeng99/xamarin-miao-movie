@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:sho="http://sharpnado.com"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="BXM308_Assignment.SettingPage" BackgroundColor="#080808">
+    <ContentPage.Content>
+        <Grid x:Name="PageContent" Opacity="0" BackgroundColor="Transparent">
+
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF6400" Offset="0"/>
+                    <GradientStop Color="#ffb145" Offset="0.3"/>
+                    <GradientStop Color="#FF6400" Offset="0.7"/>
+                    <GradientStop Color="#ffb145" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <!--Content-->
+            <StackLayout BackgroundColor="#A6080808" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            </StackLayout>
+            <Frame  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" BackgroundColor="Transparent"  >
+                    <Frame.Triggers>
+                        <!--Logged Setting Page-->
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsLogged}" Value="true">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <ScrollView  Padding="0" VerticalOptions="FillAndExpand" Margin="0,0,0 ,0"  HorizontalOptions="FillAndExpand">
+                                        <StackLayout BackgroundColor="#A6080808" Padding="0,100,0,0">
+                                            <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Margin="32,0" Text="Profiles" Style="{StaticResource Size_Large}" ></Label>
+                                            <Frame Padding="0" BackgroundColor="Transparent" BorderColor="White" Margin="16,0" CornerRadius="16">
+                                                <StackLayout Padding="0,6">
+                                                    <!--Edit Profiles-->
+                                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="16,10" >
+                                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                                            <Image Source="EditPencil" WidthRequest="25"></Image>
+                                                            <Label xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="Edit Profiles" Style="{StaticResource Size_Medium}"></Label>
+
+                                                        </StackLayout>
+
+                                                        <StackLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="Nav_Setting_Popup" CommandParameter="EditProfiles"></TapGestureRecognizer>
+                                                        </StackLayout.GestureRecognizers>
+                                                    </StackLayout>
+                                                    <BoxView HeightRequest="3" Margin="0,6" >
+                                                        <BoxView.Background>
+                                                            <LinearGradientBrush EndPoint="0,1">
+                                                                <GradientStop Color="#FFFFFF" Offset="0" />
+                                                                <GradientStop Color="#777777" Offset="0.5" />
+                                                                <GradientStop Color="#FFFFFF" Offset="1.0" />
+                                                            </LinearGradientBrush>
+                                                        </BoxView.Background>
+                                                    </BoxView>
+                                                    <!--Changes Password-->
+                                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="16,10" >
+                                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                                            <Image Source="PasswordLock" WidthRequest="25"></Image>
+                                                            <Label xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="Changes Password" Style="{StaticResource Size_Medium}"></Label>
+
+                                                        </StackLayout>
+                                                        <StackLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="Nav_Setting_Popup" CommandParameter="ChangesPassword"></TapGestureRecognizer>
+                                                        </StackLayout.GestureRecognizers>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Frame>
+                                            <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Margin="32,0" Text="Payments" Style="{StaticResource Size_Large}"></Label>
+
+                                            <Frame Padding="0" BackgroundColor="Transparent" BorderColor="White" Margin="16,0" CornerRadius="16">
+                                                <StackLayout Padding="0,6">
+                                                    <!--Purchase History-->
+                                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="16,10" >
+
+                                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                                            <Image Source="HistoryIcon" WidthRequest="25"></Image>
+                                                            <Label xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="Purchase History" Style="{StaticResource Size_Medium}"></Label>
+                                                        </StackLayout>
+
+                                                        <StackLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="Nav_Setting_Popup" CommandParameter="PurchaseHistory"></TapGestureRecognizer>
+                                                        </StackLayout.GestureRecognizers>
+                                                    </StackLayout>
+
+                                                    <BoxView HeightRequest="3" Margin="0,6" >
+                                                        <BoxView.Background>
+                                                            <LinearGradientBrush EndPoint="0,1">
+                                                                <GradientStop Color="#FFFFFF" Offset="0" />
+                                                                <GradientStop Color="#777777" Offset="0.5" />
+                                                                <GradientStop Color="#FFFFFF" Offset="1.0" />
+                                                            </LinearGradientBrush>
+                                                        </BoxView.Background>
+                                                    </BoxView>
+                                                    <!--Payment Method-->
+                                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="16,10" >
+                                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                                            <Image Source="PaymentCard" WidthRequest="25"></Image>
+                                                            <Label xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="Payment Methods" Style="{StaticResource Size_Medium}"></Label>
+
+                                                        </StackLayout>
+
+                                                        <StackLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="Nav_Setting_Popup" CommandParameter="PaymentMethods"></TapGestureRecognizer>
+                                                        </StackLayout.GestureRecognizers>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Frame>
+
+                                            <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Margin="32,0" Text="General" Style="{StaticResource Size_Large}"></Label>
+
+                                            <Frame Padding="0" BackgroundColor="Transparent" BorderColor="White" Margin="16,0" CornerRadius="16">
+                                                <StackLayout Padding="0,6">
+
+                                                    <Label  Padding="16,10" xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="Feedback" Style="{StaticResource Size_Medium}"></Label>
+
+                                                    <BoxView HeightRequest="3" Margin="0,6" >
+                                                        <BoxView.Background>
+                                                            <LinearGradientBrush EndPoint="0,1">
+                                                                <GradientStop Color="#FFFFFF" Offset="0" />
+                                                                <GradientStop Color="#777777" Offset="0.5" />
+                                                                <GradientStop Color="#FFFFFF" Offset="1.0" />
+                                                            </LinearGradientBrush>
+                                                        </BoxView.Background>
+                                                    </BoxView>
+
+                                                    <Label Margin="16,10" xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="About us (MiaoData)" Style="{StaticResource Size_Medium}"></Label>
+
+
+                                                    <BoxView HeightRequest="3" Margin="0,6" >
+                                                        <BoxView.Background>
+                                                            <LinearGradientBrush EndPoint="0,1">
+                                                                <GradientStop Color="#FFFFFF" Offset="0" />
+                                                                <GradientStop Color="#777777" Offset="0.5" />
+                                                                <GradientStop Color="#FFFFFF" Offset="1.0" />
+                                                            </LinearGradientBrush>
+                                                        </BoxView.Background>
+                                                    </BoxView>
+
+                                                    <Label Margin="16,10" xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="Clear cache" Style="{StaticResource Size_Medium}"></Label>
+
+                                                    <BoxView HeightRequest="3" Margin="0,6" >
+                                                        <BoxView.Background>
+                                                            <LinearGradientBrush EndPoint="0,1">
+                                                                <GradientStop Color="#FFFFFF" Offset="0" />
+                                                                <GradientStop Color="#777777" Offset="0.5" />
+                                                                <GradientStop Color="#FFFFFF" Offset="1.0" />
+                                                            </LinearGradientBrush>
+                                                        </BoxView.Background>
+                                                    </BoxView>
+                                                    <Label Margin="16,10" xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="Check updates" Style="{StaticResource Size_Medium}"></Label>
+
+                                                </StackLayout>
+                                            </Frame>
+
+                                            <Label Margin="32,16,32,0" Text="Follow Us" Opacity="0.9" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Medium}"></Label>
+
+                                            <FlexLayout Margin="32,6" VerticalOptions="StartAndExpand" Direction="Row" JustifyContent="SpaceAround">
+                                                <Image Source="HamburgerFacebook" WidthRequest="45"></Image>
+                                                <Image Source="HamburgerInsta" WidthRequest="45"></Image>
+                                                <Image Source="HamburgerTikTok" WidthRequest="45"></Image>
+                                                <Image Source="HamburgerYoutube" WidthRequest="45"></Image>
+
+                                            </FlexLayout>
+
+                                            <Label Margin="32,0" Text="Secure Paymeny" Opacity="0.9" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Small}"></Label>
+
+                                            <StackLayout Margin="32,0" Orientation="Horizontal">
+
+                                                <Image Source="VisaLogo.png" WidthRequest="40" ></Image>
+                                                <Image Source="MasterCardLogo.png" WidthRequest="40" ></Image>
+                                            </StackLayout>
+
+                                            <!--Log Out -->
+                                            <Frame Margin="32,16" xct:ShadowEffect.Color="#ff6400" Padding="0" CornerRadius="32" BackgroundColor="#ff6400" BorderColor="#FF6400">
+                                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="End" Padding="32,10" Margin="0,0,0,0" >
+
+                                                    <StackLayout Orientation="Horizontal" Spacing="10">
+                                                        <Image Source="LogoutLeft" WidthRequest="25"></Image>
+                                                        <Label xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="Log Out" Style="{StaticResource Size_Large}"></Label>
+
+                                                    </StackLayout>
+
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="Nav_Logout" ></TapGestureRecognizer>
+                                                    </StackLayout.GestureRecognizers>
+
+                                                </StackLayout>
+
+                                            </Frame>
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Text="Terms of Use" Style="{StaticResource Size_Caption}"></Label>
+                                                <Label Text="|" Style="{StaticResource Size_Caption}"></Label>
+                                                <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Text="Privacy Policy" Style="{StaticResource Size_Caption}"></Label>
+                                            </StackLayout>
+                                            <StackLayout Margin="32,0">
+                                                <Label Text="Copyright 2023 MiaoDaTa_Movie (666666)" Opacity="0.9" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Caption }"></Label>
+                                                <Label Text="Version 1.4376" Opacity="0.9" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Caption }"></Label>
+                                                <StackLayout Orientation="Horizontal">
+
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ScrollView>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                        <!--No Login Setting Page-->
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsLogged}" Value="false">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <ScrollView  Padding="0" VerticalOptions="FillAndExpand" Margin="0,0,0 ,0"  HorizontalOptions="FillAndExpand">
+                                        <StackLayout BackgroundColor="#A6080808" Padding="0,100,0,0">
+
+                                            <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Margin="32,0" Text="General" Style="{StaticResource Size_Large}"></Label>
+
+                                            <Frame Padding="0" BackgroundColor="Transparent" BorderColor="White" Margin="16,0" CornerRadius="16">
+                                                <StackLayout Padding="0,6">
+
+                                                    <Label  Padding="16,10" xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="Feedback" Style="{StaticResource Size_Medium}"></Label>
+
+                                                    <BoxView HeightRequest="3" Margin="0,6" >
+                                                        <BoxView.Background>
+                                                            <LinearGradientBrush EndPoint="0,1">
+                                                                <GradientStop Color="#FFFFFF" Offset="0" />
+                                                                <GradientStop Color="#777777" Offset="0.5" />
+                                                                <GradientStop Color="#FFFFFF" Offset="1.0" />
+                                                            </LinearGradientBrush>
+                                                        </BoxView.Background>
+                                                    </BoxView>
+
+                                                    <Label Margin="16,10" xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="About us (MiaoData)" Style="{StaticResource Size_Medium}"></Label>
+
+
+                                                    <BoxView HeightRequest="3" Margin="0,6" >
+                                                        <BoxView.Background>
+                                                            <LinearGradientBrush EndPoint="0,1">
+                                                                <GradientStop Color="#FFFFFF" Offset="0" />
+                                                                <GradientStop Color="#777777" Offset="0.5" />
+                                                                <GradientStop Color="#FFFFFF" Offset="1.0" />
+                                                            </LinearGradientBrush>
+                                                        </BoxView.Background>
+                                                    </BoxView>
+
+                                                    <Label Margin="16,10" xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="Clear cache" Style="{StaticResource Size_Medium}"></Label>
+
+                                                    <BoxView HeightRequest="3" Margin="0,6" >
+                                                        <BoxView.Background>
+                                                            <LinearGradientBrush EndPoint="0,1">
+                                                                <GradientStop Color="#FFFFFF" Offset="0" />
+                                                                <GradientStop Color="#777777" Offset="0.5" />
+                                                                <GradientStop Color="#FFFFFF" Offset="1.0" />
+                                                            </LinearGradientBrush>
+                                                        </BoxView.Background>
+                                                    </BoxView>
+                                                    <Label Margin="16,10" xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" Text="Check updates" Style="{StaticResource Size_Medium}"></Label>
+
+                                                </StackLayout>
+                                            </Frame>
+
+                                            <Label Margin="32,16,32,0" Text="Follow Us" Opacity="0.9" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Medium}"></Label>
+
+                                            <FlexLayout Margin="32,6" VerticalOptions="StartAndExpand" Direction="Row" JustifyContent="SpaceAround">
+                                                <Image Source="HamburgerFacebook" WidthRequest="45"></Image>
+                                                <Image Source="HamburgerInsta" WidthRequest="45"></Image>
+                                                <Image Source="HamburgerTikTok" WidthRequest="45"></Image>
+                                                <Image Source="HamburgerYoutube" WidthRequest="45"></Image>
+
+                                            </FlexLayout>
+
+                                            <Label Margin="32,0" Text="Secure Paymeny" Opacity="0.9" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Small}"></Label>
+
+                                            <StackLayout Margin="32,0" Orientation="Horizontal">
+
+                                                <Image Source="VisaLogo.png" WidthRequest="40" ></Image>
+                                                <Image Source="MasterCardLogo.png" WidthRequest="40" ></Image>
+                                            </StackLayout>
+
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Text="Terms of Use" Style="{StaticResource Size_Caption}"></Label>
+                                                <Label Text="|" Style="{StaticResource Size_Caption}"></Label>
+                                                <Label xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Text="Privacy Policy" Style="{StaticResource Size_Caption}"></Label>
+                                            </StackLayout>
+                                            <StackLayout Margin="32,0">
+                                                <Label Text="Copyright 2023 MiaoDaTa_Movie (666666)" Opacity="0.9" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Caption }"></Label>
+                                                <Label Text="Version 1.4376" Opacity="0.9" xct:ShadowEffect.Color="#ff6400" xct:ShadowEffect.Radius="3" Style="{StaticResource Size_Caption }"></Label>
+                                                <StackLayout Orientation="Horizontal">
+
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ScrollView>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+
+                    </Frame.Triggers>
+                </Frame>
+        
+            <!--Header-->
+            <sho:MaterialFrame  VerticalOptions="Start" Padding="0" AndroidBlurRadius="20" MaterialBlurStyle="Dark" BackgroundColor="Transparent" MaterialTheme="AcrylicBlur" >
+                <Grid  BackgroundColor="#A6080808"  VerticalOptions="Start" HeightRequest="60" Padding="0,16,0,0" >
+                    <Label xct:ShadowEffect.Color="#ffffff" xct:ShadowEffect.Radius="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" Text="Setting" Style="{StaticResource Size_Title}"></Label>
+                    <Image Source="SettingIcon" HorizontalOptions="End" Margin="0,0,16,0"  TranslationY="-10" WidthRequest="35"></Image>
+
+                    <Frame Padding="6" BackgroundColor="#B3404040"  TranslationY="-3" CornerRadius="16" VerticalOptions="Start" HorizontalOptions="Start" Margin="16,0,0,0"   >
+                        <Image Source="BackIconWhite" Aspect="AspectFit" WidthRequest="35"></Image>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Nav_ClosePage"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </Grid>
+            </sho:MaterialFrame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
