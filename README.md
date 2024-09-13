@@ -76,18 +76,22 @@ Follow the official [Firebase Authentication documentation](https://firebase.goo
 Troubleshooting
 Common Issues
 Firebase URL Error: Ensure that you correctly replace the Firebase URL in the /Firebase/Firebase/Firebase.cs file.
+
 Database Rules Error: Make sure the Firebase Realtime Database rules are set correctly, as shown above.
+
 Authentication Issues: If using Firebase Auth, ensure proper configuration by following Firebase’s documentation.
-Contributing
+
+### Contributing
+
 Feel free to fork this repository, submit issues, or create pull requests. All contributions are welcome!
 
-License
+### License
 This project is open-source under the MIT License.
 
-Support
+### Support
 For any questions or help, please reach out by creating an issue on the GitHub repository.
 
-4. Note to Users
+## 4. Note to Users
 If you are trying this app for testing purposes, please make sure to update your Firebase database rules as follows:
 
 ```
